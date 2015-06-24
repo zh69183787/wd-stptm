@@ -1,0 +1,66 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="address" namespace="/address" extends="cuteframework-default">
+
+
+		<!-- 集团通讯录 -->
+		<!-- 列表视图 -->
+		<action name="showGroupList" class="addressAction" method="showGroupList">
+			<result name="showGroupList">/address/groupList.jsp</result>
+		</action>
+		<action name="personAddressList" class="addressAction" method="personAddressList">
+			<result name="personAddressList">/address/GroupAddressView.jsp</result>
+		</action>
+		<!-- 分类视图 -->
+		<action name="sortViewByCode" class="addressAction" method="sortViewByCode">
+			<result name="sortViewByCode">/address/ViewList.jsp</result>
+		</action>
+		<action name="sortView" class="addressAction" method="sortView">
+			<result name="sortView">/address/groupViewList.jsp</result>
+		</action>
+		<action name="sortView1" class="addressAction" method="sortView1">
+			<result name="sortView1">/address/groupViewList1.jsp</result>
+		</action>
+		<action name="sortView2" class="addressAction" method="sortView2">
+			<result name="sortView2">/address/groupViewList2.jsp</result>
+		</action>
+
+		<!-- 个人通讯录 -->
+
+		<action name="showPersonAddressList" class="addressAction"
+			method="showPersonAddressList">
+			<result name="showPersonAddressList">/address/personAddressList.jsp</result>
+		</action>
+
+	<!-- 添加 -->
+		<action name="showToAddPersonAddressList" class="addressAction"
+			method="showToAddPersonAddressList">
+			<result name="showToAddPersonAddressList">/address/addPersonAddress.jsp</result>
+		</action>
+		<!-- 添加 -->
+		<action name="showAddPersonAddressList" class="addressAction"
+			method="showAddPersonAddressList">
+			<result name="showAddPersonAddressList">/address/person.jsp</result>
+		</action>
+		<!-- 删除 -->
+		<action name="delPersonAddress" class="addressAction" method="delPersonAddress">
+			<result name="delPersonAddress">/address/person.jsp</result>
+		</action>
+		<!-- 准备修改 -->
+		<action name="findByIdPersonAddress" class="addressAction"
+			method="findByIdPersonAddress">
+			<result name="findByIdPersonAddress">/address/updatePersonAddress.jsp</result>
+		</action>
+
+		<!-- 修改 -->
+		<action name="updatePersonAddress" class="addressAction"
+			method="updatePersonAddress">
+			<result name="updatePersonAddress">/address/person.jsp</result>
+		</action>
+		
+	</package>
+
+</struts>
+	

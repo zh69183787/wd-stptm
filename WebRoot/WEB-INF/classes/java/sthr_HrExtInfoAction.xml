@@ -1,0 +1,32 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="HrExtInfo" namespace="/sthr" extends="cuteframework-default">		
+		<action name="addHrExtInfo" class="hrExtInfoAction" method="addHrExtInfo">
+		    <result>/sthr/editSuccess.jsp</result>
+		</action>
+		<action name="deleteHrExtInfo" class="hrExtInfoAction" method="deleteHrExtInfo"/>
+		<action name="findHrExtInfoById" class="hrExtInfoAction" method="findHrExtInfoById"/>
+		<action name="findHrExtInfoByPage" class="hrExtInfoAction" method="findHrExtInfoByPage"/>
+		<action name="updateHrExtInfoById" class="hrExtInfoAction" method="updateHrExtInfoById">
+		    <result>/sthr/editSuccess.jsp</result>
+		</action>
+		<action name="findHrInfoByType" class="hrExtInfoAction" method="findHrInfoByType"/>
+		<action name="deleteById" class="hrExtInfoAction" >
+		    <result name="view" type="redirect-action">
+		        <param name="actionName">findHrBInfoById</param>
+		        <param name="hrId">${hrId}</param>
+		        <param name="type">view</param>
+		    </result>
+		    <!-- 
+		    <result name="edit" type="redirect-action">
+		        <param name="actionName">findHrBInfoById</param>
+		        <param name="hrId">${hrId}</param>
+		        <param name="type">edit</param>
+		    </result>
+		     -->	
+		</action>
+	</package>
+</struts>
+	

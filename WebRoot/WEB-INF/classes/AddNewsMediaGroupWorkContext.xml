@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="newsMediaGroupWorkDao"  parent="abstractHibernateDao"
+	class="com.wonders.stpt.group.groupWork.NewsMediaGroupWork.dao.impl.NewsMediaGroupWorkDaoImpl">
+	
+	</bean>
+
+	<bean id="workServiceImpl" class="com.wonders.stpt.group.groupWork.NewsMediaGroupWork.service.impl.NewsMediaGroupWorkServiceImpl">
+		<property name="newsMediaGroupWorkDao" ref="newsMediaGroupWorkDao"></property>
+	</bean>
+
+	<bean id="workService" parent="basicTxProxy">
+		<property name="target" ref="workServiceImpl"></property>
+	</bean>
+
+	<bean id="workAction"  class="com.wonders.stpt.group.groupWork.NewsMediaGroupWork.action.WorkAction">
+		<property name="workService" ref="workService"></property>
+	</bean>
+
+</beans>
+	
+
+	

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<!-- NOTE: For Hibernate Session Factory Use Only -->
+<hibernate-configuration> 
+  <session-factory> 
+    <property name="connection.pool_size">1</property>  
+    <property name="show_sql">false</property>  
+    <property name="format_sql">false</property>  
+    <property name="cache.provider_class">org.hibernate.cache.OSCacheProvider</property>  
+    <property name="cache.use_query_cache">true</property>  
+    <property name="query.factory_class">org.hibernate.hql.ast.ASTQueryTranslatorFactory</property>  
+    <property name="query.substitutions">true 1, false 0, yes 'Y', no 'N'</property>  
+    <property name="proxool.pool_alias">pool1</property>  
+    <property name="jdbc.batch_size">0</property>  
+    <property name="jdbc.use_streams_for_binary">true</property>  
+    <property name="max_fetch_depth">1</property>  
+    <!-- set hbm2ddl strategy -->  
+    <!--
+			<property name="hibernate.hbm2ddl.auto">update</property>
+		-->  
+    <!-- add BO class Mapping here optionally -->  
+    <!-- construction  -->  
+    <mapping class="com.wonders.stpt.construction.TConstructionNotice.entity.bo.TConstructionNotice"/>  
+    <mapping class="com.wonders.stpt.construction.ConstructionMetroLine.entity.bo.ConstructionMetroLine"/>  
+    <!-- sthr  -->  
+    <mapping class="com.wonders.stpt.sthr.HrBInfo.entity.bo.HrBInfo"/>  
+    <mapping class="com.wonders.stpt.sthr.HrEt.entity.bo.HrEt"/>  
+    <mapping class="com.wonders.stpt.sthr.HrEtD.entity.bo.HrEtD"/>  
+    <mapping class="com.wonders.stpt.sthr.HrExtInfo.entity.bo.HrExtInfo"/>  
+    <!-- accidentCase  -->  
+    <mapping class="com.wonders.stpt.accidentCase.MetroAccidentCase.entity.bo.MetroAccidentCase"/>  
+    <mapping class="com.wonders.stpt.accidentCase.MetroLine.entity.bo.MetroLine"/>  
+    <mapping class="com.wonders.stpt.accidentCase.MetroStation.entity.bo.MetroStation"/>  
+    <mapping class="com.wonders.stpt.accidentCase.AccidentCaseApproval.entity.bo.AccidentCaseApproval"/>  
+    <mapping class="com.wonders.stpt.accidentCase.TAttach.entity.bo.TAttach"/>  
+    <!-- evaluation -->  
+    <mapping class="com.wonders.stpt.evaluate.FlowEvaluation.entity.bo.TFlowEvaluation"/>  
+    <mapping class="com.wonders.stpt.evaluate.FlowEvaluationItem.entity.bo.TFlowEvaluationItem"/>  
+    <mapping class="com.wonders.stpt.asset.entity.bo.CfCodeInfo"/>  
+    <mapping class="com.wonders.stpt.asset.entity.bo.CfCodeType"/>  
+    <mapping class="com.wonders.stpt.asset.entity.bo.AssetInfo"/>  
+    <mapping class="com.wonders.stpt.asset.entity.bo.AssetInfoHistory"/>  
+    <mapping class="com.wonders.stpt.supplier.entity.bo.Supplier"/>  
+    <mapping class="com.wonders.stpt.task.entity.bo.AssetTask"/>  
+    <mapping class="com.wonders.stpt.equipment.info.entity.bo.EquipmentInfo"/>  
+    <mapping class="com.wonders.stpt.equipment.replace.entity.bo.EquipmentPartsReplace"/>  
+    <mapping class="com.wonders.stpt.equipment.service.entity.bo.EquipmentServiceInfo"/>  
+    <mapping class="com.wonders.stpt.equipment.paramters.entity.bo.EquipmentParameters"/>  
+    <mapping class="com.wonders.stpt.equipment.paramCheck.entity.bo.EquipmentHistoryParameters"/>  
+    <mapping class="com.wonders.stpt.task.entity.bo.AssetTaskCheck"/>  
+    <mapping class="com.wonders.stpt.securityreport.entity.bo.SecReport"/>  
+    <mapping class="com.wonders.stpt.user.entity.bo.User"/>  
+    <mapping class="com.wonders.stpt.csUser.entity.bo.CsUser"/>  
+    <mapping class="com.wonders.stpt.hiddenDangersCorrect.entity.bo.HiddenDangersCorrect"/>  
+    <mapping class="com.wonders.stpt.asset.entity.bo.DwAssetCodeInfo"/>  
+    <mapping class="com.wonders.stpt.dbFollow.entity.bo.DbFollow"/>  
+    <mapping class="com.wonders.stpt.dbFollow.entity.bo.DbFollowChild"/>  
+    <mapping class="com.wonders.stpt.dbFollow.entity.bo.DbFollowPlan"/>  
+    <mapping class="com.wonders.stpt.dbBusiness.entity.bo.DbBusiness"/>
+    
+    <mapping class="com.wonders.stpt.dbFollow.entity.bo.SendTodoItem"/>
+    <mapping class="com.wonders.stpt.dbFollow.entity.bo.TMsgUserMassage"/>
+  
+  	<!-- 信息化建设表映射 start-->
+  	<mapping class="com.wonders.stpt.group.groupMember.AddUpdateGroupMember.entity.bo.AddUpdateGroupMember"  />
+  	<mapping class="com.wonders.stpt.group.groupLeader.AddUpdateGroupLeader.entity.bo.AddUpdateGroupLeader"  />
+  	<mapping class="com.wonders.stpt.group.groupMemberDirectly.AddGroupMemberDirectly.entity.bo.AddGroupMemberDirectly"   />
+  	<mapping class="com.wonders.stpt.group.groupNewMedia.AddGroupNewMedia.entity.bo.AddGroupNewMedia"  />
+  	<mapping class="com.wonders.stpt.group.groupWork.NewsMediaGroupWork.entity.bo.NewsMediaGroupWork"/>
+  	<mapping class="com.wonders.stpt.group.groupCommunication.NewsMediaGroupCommunication.entity.bo.NewsMediaGroupCommunication"/>
+  	<mapping class="com.wonders.stpt.group.groupActive.NewsMediaGroupActive.entity.bo.NewsMediaGroupActive"/>
+  	<mapping class="com.wonders.stpt.group.groupWibo.Real_nameGroupWibo.entity.bo.Real_nameGroupWibo"/>
+  	<!-- 信息化建设表映射end -->
+
+	<!-- 整改工作情况映射start -->
+	<mapping class="com.wonders.stpt.rectification.rectificationWork.entity.bo.RectificationWork" />
+	<!-- 整改工作情况映射end -->
+	
+	<!-- 整改记录情况映射start -->
+	<mapping class="com.wonders.stpt.rectification.rectificationRecord.entity.bo.RectificationRecord" />
+	<!-- 整改记录情况映射end -->
+	
+	<mapping class="com.wonders.stpt.myNotice.entity.bo.MsgUserMassage"/>  
+    <mapping class="com.wonders.stpt.shortMseeage.model.bo.ShortMessageTask"/>  
+    <mapping class="com.wonders.stpt.annualLeave.model.HolConfig"/>  
+    <mapping class="com.wonders.stpt.annualLeave.model.HolHoliday"/>  
+    <mapping class="com.wonders.stpt.annualLeave.model.HolHolidayApply"/>  
+    <mapping class="com.wonders.stpt.annualLeave.model.VUserdep"/>  
+    <mapping class="com.wonders.stpt.annualLeave.model.data.entity.bo.THolHoliday"/>  
+    <mapping class="com.wonders.stpt.annualLeave.model.data.entity.bo.THolHolidayapp"/>  
+    <mapping class="com.wonders.stpt.annualLeave.model.data.entity.bo.OldCsUser"/>
+    
+    <!-- sunjiawei 项目计划 -->
+    <mapping class="com.wonders.stpt.projectPlan.entity.bo.ProjectPlan"/>
+
+      <!-- zhoushun 隐患排查记录-->
+      <mapping class="com.wonders.stpt.hiddenDangersCorrect.entity.bo.HdcChangeLog"/>
+  </session-factory> 
+</hibernate-configuration>

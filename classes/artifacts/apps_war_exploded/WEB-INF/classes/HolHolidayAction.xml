@@ -1,0 +1,27 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="HolHoliday" namespace="/holHolidays" extends="cuteframework-default">
+
+		<action name="showList" class="holHolidayAction" method="showList">
+			<result>/annualLeave/holHolidays/holHolidaysList.jsp</result>
+		</action>
+		
+		<action name="showUpload" class="holHolidayAction" method="showUpload">
+			<result>/annualLeave/holHolidays/fileUpload.jsp</result>
+		</action>
+		
+		<action name="downloadTemplete" class="holHolidayAction" method="downloadTemplete"></action>
+		
+		<action name="batchUploadHolHoldays" class="holHolidayAction" method="batchUploadHolHoldays"></action>
+		
+		<action name="updateHolHolidays" class="holHolidayAction" method="updateHolHolidays"></action>
+		
+		<action name="findHolHolidaySettime" class="holHolidayAction" method="findHolHolidaySettime"></action>
+		<action name="updateHolHolidaysSettime" class="holHolidayAction" method="updateHolHolidaysSettime"></action>
+		
+		
+	</package>
+</struts>
+	

@@ -1,0 +1,18 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="MetroStation" namespace="/accidentCase" extends="cuteframework-default">
+
+		<action name="addMetroStation" class="metroStationAction" method="addMetroStation"/>
+		<action name="deleteMetroStation" class="metroStationAction" method="deleteMetroStation"/>
+		<action name="findMetroStationById" class="metroStationAction" method="findMetroStationById"/>
+		<action name="findMetroStationByPage" class="metroStationAction" method="findMetroStationByPage"/>
+		<action name="updateMetroStation" class="metroStationAction" method="updateMetroStation"/>
+		
+		<action name="metroStationAction" class="metroStationAction" />
+		
+
+	</package>
+</struts>
+	

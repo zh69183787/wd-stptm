@@ -1,0 +1,490 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>案例查询</title>
+<link rel="stylesheet" href="../css/formalize.css" />
+<link rel="stylesheet" href="../css/page.css" />
+<link rel="stylesheet" href="../css/imgs.css" />
+<link rel="stylesheet" href="../css/reset.css" />
+<!--[if IE 6.0]>
+           <script src="js/iepng.js" type="text/javascript"></script>
+           <script type="text/javascript">
+                EvPNG.fix('div, ul, ol, img, li, input, span, a, h1, h2, h3, h4, h5, h6, p, dl, dt');
+           </script>
+       <![endif]-->
+        <script src="../js/html5.js"></script>
+        <script src="../js/jquery-1.7.1.js"></script>
+        
+		<script src="../js/jquery.formalize.js"></script>
+        <script src="../js/high.js"></script>
+        <script src="../js/My97DatePicker/WdatePicker.js"></script>
+        <script type="text/javascript">
+			$(function(){ $('#High').high();});
+		</script>
+<script type="text/javascript">
+function crossDomainShowOrHide(){
+	$("#iframe").attr("src","http://10.1.14.20:8088/portal/portal.jsp?random=Math.random()");
+}  
+</script>		
+        <script type="text/javascript">
+        $(document).ready(function () {
+            var $tbInfo = $(".filter .query input:text");
+            $tbInfo.each(function () {
+                $(this).focus(function () {
+                    $(this).attr("placeholder", "");
+                });
+            });
+			
+			var $tblAlterRow = $(".table_1 tbody tr:even");
+			if ($tblAlterRow.length > 0)
+				$tblAlterRow.css("background","#fafafa");			
+        });
+        
+        	linePick();
+       
+        //页面加载调用该方法，查询所有地铁线路
+        function linePick(){
+        	$.ajax({
+				type: 'POST',
+				url: 'metroLineAction!findAllMetroLine.action',
+				dataType:'json',
+				error:function(){alert('提交失败')},
+				success: function(obj){
+					var metroLine = "<option value=''>---请选择---</option>";
+					for(var i=0;i<obj.length;i++){
+						if($("#line").val()==obj[i].lineId){
+							metroLine +="<option value='"+obj[i].lineId+"' selected>"+obj[i].lineName+"</option>";
+						}else{
+							metroLine +="<option value='"+obj[i].lineId+"'>"+obj[i].lineName+"</option>";
+						}
+					}
+					$("#line_select").html(metroLine);
+					//stationPick();
+				}	  
+			});
+        }
+        
+        
+        
+        
+        //跳转到制定页
+        function goPage(pageNo,type){
+        
+			//type=0,直接跳转到制定页
+	       if(type=="0"){
+	   	    	var pageCount = $("#totalPageCount").val();
+	       		var number = $("#number").val();
+	       		if(!number.match(/^[0-9]*$/)){
+	       			alert("请输入数字");
+	       			$("#number").val("");
+	       			$("#number").focus();
+	       			return ;
+	       		}
+	       		if(parseInt(number)>parseInt(pageCount)){
+	       			$("#number").val(pageCount);
+	       			$("#pageNo").val(pageCount);
+	       		}else{
+	       			$("#pageNo").val(number);
+	       		}
+	       }
+			//type=1,跳转到上一页	       
+	       if(type=="1"){
+	       		$("#pageNo").val(parseInt($("#number").val())-1);
+	       }
+			//type=2,跳转到下一页	       
+	       if(type=="2"){
+	       		$("#pageNo").val(parseInt($("#number").val())+1);
+	       }
+	       
+	       //type=3,跳转到最后一页,或第一页
+	       if(type=="3"){
+	   	    	$("#pageNo").val(pageNo);
+	       }
+       	   $("#form").submit();
+
+
+        }
+        
+         //点击取消按钮后 清空所有数据
+      function clearInput(){
+      
+      		//清空时间
+      		$("#occurSTime1").attr("value","");
+      		$("#occurSTime2").attr("value","");
+      		//清空关键字
+      		$("#keyWord").attr("value","");
+      		
+      		//清空责任部门
+      		$("#responsibleDeptName").attr("value","");
+      		
+      		//清空涉及地点
+      		$("#station_select").attr("value","");
+      		
+      		//清空时间性质
+      		//document.getElementById("caseCategoryName").options[0].selected=true;
+      		//清空线路
+      		document.getElementById("line_select").options[0].selected=true;
+      		
+      		//document.getElementById("station_select").options[0].selected=true;
+      		//清空审核状态
+      		document.getElementById("caseType_select").options[0].selected=true;
+      }
+        
+        
+        
+      $(document).ready(function() {
+      		$('[id=show_keyWord]').each(
+      			function(index){
+      				var html = $(this).html();
+      				var trimhtml = trimStr(html);
+      				$(this).html(trimStr(html));
+      			}
+      		)
+      		
+      		$('[id=show_reportPersonName]').each(
+      			function(index){
+      				var html = $(this).html();
+      				var trimhtml = trimStr(html);
+      				$(this).html(trimStr(html));
+      			}
+      		)
+      		
+      		$('[id=show_caseName]').each(
+      			function(index){
+      				var html = $(this).html();
+      				var trimhtml = trimStr(html);
+      				$(this).html(trimStr(html));
+      			}
+      		)
+      		
+      		$('[id=show_metroStation]').each(
+      			function(index){
+      				var html = $(this).html();
+      				var trimhtml = trimStr(html);
+      				$(this).html(trimStr(html));
+      			}
+      		)
+      		
+      		$('[id=show_responsible]').each(
+      			function(index){
+      				var html = $(this).html();
+      				var trimhtml = trimStr(html);
+      				$(this).html(trimStr(html));
+      			}
+      		)
+      		
+      });
+      
+	function trimStr(html){
+		if(html.length>7){
+			return (html.substr(0,7)+"...");
+		}
+		return html
+	}
+		
+	function submitFormByCaseCType(caseCType){
+		$("#caseCTypeCode").val(caseCType);
+		$("#form").submit();
+		
+	}
+	
+	function submitFormByCaseType(caseType){
+	
+		//$("#caseType").val(caseType);
+		//document.getElementById("caseType").options[1].selected=true;
+		$("#caseType_select").children("option:eq("+caseType+")").attr("selected",true);
+		$("#caseCTypeCode").val("");
+		//alert($("#caseType_select").val());
+		//clearInput();
+		$("#form").submit();
+		
+		
+	}
+		
+	$(document).ready(function(){
+		$("td[id=date]").each(function(index){
+			var text = $(this).text();
+			var subText = text.substring(11,16);
+			
+			if(subText=="00:00"){
+				text =  text.substring(0,10);
+				text += "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+				$(this).html(text);
+			}
+		})
+	})
+$(function(){
+	 $("img").toggle(
+  			function () {$("img").attr("src","../images/sideBar_arrow_right.jpg");},
+  			function () {$("img").attr("src","../images/sideBar_arrow_left.jpg");}
+	 );
+});      
+      
+    </script>
+
+
+
+</head>
+
+<body>
+<iframe id="iframe" style="display:none;"></iframe>
+	<!-- <input type="hidden" name="caseCType" value="<s:property value='caseCType'/>" id="caseCType"/> -->
+	
+	
+	
+	<div class="main">
+    	<!--Ctrl-->
+		<div class="ctrl clearfix">
+        	<div class="fl"><img src="../images/sideBar_arrow_left.jpg" width="46" height="30" alt="收起" onclick="crossDomainShowOrHide();"></div>
+            <div class="posi fl">
+            	<ul>
+                	<li><a href="#">运营事件案例库</a></li>
+                	<li><a href="#">案例查询</a></li>
+                </ul>
+            </div>
+            <div class="fr lit_nav">
+            	<ul>
+                <li class="selected"><a class="print" href="#">打印</a></li>
+                <li><a class="storage" href="#">网络硬盘</a></li>
+                <li><a class="rss" href="#">订阅</a></li>
+                <li><a class="chat" href="#">聊天</a></li>
+                <li><a class="query" href="#">查询</a></li>
+                </ul>
+            </div>
+   		</div>
+        <!--Ctrl End-->
+        <!--Tabs_2-->
+        <div class="tabs_2">
+        	<ul id="urlist">
+            	
+        			<li class="selected"><a href="#" onclick="submitFormByCaseType('')"><span>全部</span></a></li>
+        		
+        			
+        		
+            	<s:if test="caseType==1">
+        			<li class="selected"><a href="#" onclick="submitFormByCaseType('1')"><span>E类以上典型运营事故</span></a></li>
+        		</s:if>
+        		<s:else>
+        			<li><a href="#" onclick="submitFormByCaseType(1)"><span>E类以上典型运营事故</span></a></li>
+        		</s:else>
+        		
+        		<s:if test="caseType==2">
+        			<li class="selected"><a href="#" onclick="submitFormByCaseType(2)"><span>运营延误事件</span></a></li>
+        		</s:if>
+        		<s:else>
+        			<li><a href="#" onclick="submitFormByCaseType(2)"><span>运营延误事件</span></a></li>
+        		</s:else>
+        		
+        		<s:if test="caseType==3">
+        			<li class="selected"><a href="#" onclick="submitFormByCaseType(3)"><span>设备安全事件 </span></a></li>
+        		</s:if>
+        		<s:else>
+        			<li><a href="#" onclick="submitFormByCaseType(3)"><span>设备安全事件 </span></a></li>
+        		</s:else>
+        		
+        		<s:if test="caseType==4">
+        			<li class="selected"><a href="#" onclick="submitFormByCaseType(4)"><span>有责投诉</span></a></li>
+        		</s:if>
+        		<s:else>
+        			<li><a href="#" onclick="submitFormByCaseType(4)"><span>有责投诉</span></a></li>
+        		</s:else>
+        		
+            </ul>
+        </div>
+        <!--Tabs_2 End-->
+        <!--Filter-->
+        
+      <div class="filter">
+      
+      		<div class="query p8">
+        	
+        	<input type="hidden" id="line" value="<s:property value='metroAccidentCaseVO.metroLine'/>">
+        	<input type="hidden" id="station" value="<s:property value='metroAccidentCaseVO.metroStation'/>">
+        	
+        	
+        	<s:form action="findMetroAccidentCaseByPage2" id="form" name="MetroAccidentCase" namespace="/accidentCase" method="post">
+        	
+        	<input type="hidden"  value="" name="number" id="pageNo"/>
+        	<!-- 
+        	<input type="hidden" name="caseType" value="<s:property value='caseType'/>" id="caseType">
+        	 -->
+        	<input type="hidden" name="caseCTypeCode" value="<s:property value='caseCTypeCode'/>" id="caseCTypeCode"/>
+        	
+        	
+        	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        	    <tr>
+        	      <td class="t_r" style="white-space:nowrap;">发生时间</td>
+        	      <td style="white-space:nowrap;"><input type="text" id="occurSTime1" name="occurSTime1" style="width:116px" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<s:property value='#request.occurSTime1'/>"/>
+        	      至<input type="text" id="occurSTime2" name="occurSTime2" style="width:116px" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="<s:property value='#request.occurSTime2'/>"/>
+        	      </td>
+        	      <td class="t_r" style="white-space:nowrap;">事故线路</td>
+        	      <td><select name="metroLine" id="line_select" class="input_large" onchange="" >
+        	      <option value="">---请选择---</option>
+      	        </select></td>
+        	      <td class="t_r" style="white-space:nowrap;">涉及地点</td>
+        	      <td>
+        	      <!-- 
+        	      	<select name="metroStation" id="station_select" class="input_large" >
+        	        	<option value="">---请选择---</option>
+      	        	</select>
+      	          -->
+      	          <input type="text" name="metroStationName" id="station_select" class="input_large" value="<s:property value="metroAccidentCaseVO.metroStationName"/>"/>
+      	        	</td>
+      	        </tr>
+        	    <tr>
+        	      <td class="t_r" style="white-space:nowrap;">关键字</td>
+        	      <td><input type="text" id="keyWord" name="keyWord" class="input_xlarge" value="<s:property value="metroAccidentCaseVO.keyWord"/>"/></td>
+        	      
+        	     
+        	      <td class="t_r" style="white-space:nowrap;">责任部门</td>
+        	      <td><input type="text" id="responsibleDeptName" name="responsibleDeptName" class="input_large" value="<s:property value="metroAccidentCaseVO.responsibleDeptName"/>"/></td>
+      	          <td class="t_r" style="white-space:nowrap;">事故类型</td>
+        	      <td>
+        	      	<select id="caseType_select" name="caseType" class="input_large" />	        	      	
+	        	      		<option value=""  selected="selected">全部</option>
+	        	      		<option value="1" >E类以上典型运营事故</option>
+	        	      		<option value="2">运营延误事件</option>
+	        	      		<option value="3">设备安全事件</option>
+	        	      		<option value="4">有责投诉</option>	        	      	
+        	      	</select>
+        	      </td>
+      	        </tr>
+      	       
+        	    <tr>
+        	      <td colspan="6" class="t_c">
+                  	<input type="submit" value="检 索" />&nbsp;&nbsp;
+					<input type="button" value="取 消" onclick="clearInput()"/></td>
+				</tr>
+      	    </table>
+      	    </s:form>
+        	</div>
+       <!-- 
+        <div class="fn">
+          <input type="submit" name="button2" id="button2" value="新 增" class="new" onclick="window.open('toAdd.action?caseType=<s:property value='metroAccidentCaseVO.caseType'/>')">
+        </div>
+         -->
+      </div>
+      
+        <!--Filter End-->
+        <!--Table-->
+        <div class="mb10">
+        	
+           
+        	  <table width="100%"  class="table_1">
+        	    <thead>
+      	        <th colspan="15">设备安全事故列表</th>
+      	        </thead>
+	 	                        <tbody>
+	 	                          <tr class="tit">
+	 	                            <td><input type="checkbox" id="test_checkbox_1" name="test_checkbox_1" /></td>
+	 	                            <td>事故类型</td>
+	 	                            <td>发生时间</td>
+	 	                            <td>事故线路</td>
+	 	                            <td>涉及地点</td>
+	 	                            <td>事件名称</td>
+	 	                            <td>关键字</td>
+	 	                            <td>事件性质</td>
+	 	                            <td>责任部门</td>
+	 	                            <td>上报人</td>
+	 	                            <td>状态</td>
+	 	                            <td>操作</td>
+	                            </tr>
+	                            
+	                            <s:iterator value="#request.page.result">
+	 	                          <tr>
+	 	                            <td class="t_c"><input type="checkbox" id="test_checkbox_1" name="test_checkbox_1" /></td>
+	 	                            <td class="t_c" id="show_caseType">
+                                      <s:if test="caseType==1">E类以上典型运营事故</s:if>
+                                      <s:elseif test="caseType==2">运营延误事件</s:elseif>
+                                      <s:elseif test="caseType==3">设备安全事件</s:elseif>
+                                      <s:elseif test="caseType==4">有责投诉</s:elseif>
+                                      
+                                    </td>
+	 	                            <td class="t_c" id="date"><s:date name="occurSTime" format="yyyy-MM-dd HH:mm"/></td>
+	 	                            <td class="t_c">
+	 	                            <!-- 
+	 	                            	<s:if test="metroLine==1"><span class="lineNum l01"><s:property value="metroLine"/></span></s:if>
+	 	                            -->
+	 	                            <span><s:property value="metroLineName"/></span>
+	 	                            </td>
+	 	                            <td class="t_c" id="show_metroStation" title="<s:property value="metroStationName"/>"><s:property value="metroStationName"/></td>
+	 	                            <td class="t_c" id="show_caseName" title="<s:property value="caseName"/>"><s:property value="caseName"/></td>
+	 	                            <td class="t_c" id="show_keyWord" title="<s:property value="keyWord"/>"><s:property value="keyWord"/></td>
+	 	                            <td class="t_c"><s:property value="caseCategoryName"/></td>
+	 	                            <td class="t_c" id="show_responsible" title="<s:property value="responsibleDeptName"/>"><s:property value="responsibleDeptName"/></td>
+	 	                            <td class="t_c" id="show_reportPersonName" title="<s:property value="reportPersonName"/>"><s:property value="reportPersonName"/></td>
+	 	                            <td class="t_c">
+										<s:if test="approvalStatus==0002">
+											预审通过
+										</s:if>
+										<s:elseif test="approvalStatus==0003">
+											终审通过
+										</s:elseif>
+										<s:elseif test="approvalStatus==0001">
+											待审核
+										</s:elseif>
+	 	                            </td>
+	 	                            <td class="t_c">
+	  	                            <a class="fl mr5" href="findMetroAccidentCaseById.action?caseId=<s:property value='caseId'/>&type=view&caseType=<s:property value='metroAccidentCaseVO.caseType'/>" target="_blank">查看</a> 
+	  	                            <!-- 
+	  	                            <a class="fl mr5" href="javascript:void(0)" onclick="deleteData(<s:property value='caseId'/>)">删除</a> 
+	  	                            <a class="fl mr5" href="findMetroAccidentCaseById.action?caseId=<s:property value='caseId'/>&type=edit" target="_blank">修改</a>
+	  	                             -->
+	  	                            </td>
+	                            </tr>
+	                            </s:iterator>
+	                            
+	                          </tbody>
+  	                          
+      	       <tr class="tfoot">
+        	      <td colspan="12"><div class="clearfix"><span class="fl"><s:property value="#request.page.totalSize"/>条记录，当前显示<s:property value="#request.page.start"/>-<s:property value="#request.page.start+#request.page.pageSize-1"/>条</span>
+        	        <ul class="fr clearfix pager">
+        	          <li>Pages:<s:property value="#request.page.currentPageNo"/>/<s:property value="#request.page.totalPageCount"/>
+        	          	<input type="hidden" value="<s:property value='#request.page.totalPageCount'/>" id="totalPageCount">
+        	            <input type="text"" id="number" name="pageNumber" min="0" max="999" step="1" class="input_tiny" value="<s:property value='#request.page.currentPageNo'/>"/>
+        	            <input type="button"" name="button" id="button" value="Go" onclick="goPage(0,0)">
+      	            </li>
+        	          
+                       <s:if test="#request.page.currentPageNo==#request.page.totalPageCount">
+                       	 <li><a href="javascript:void(0)">&gt;&gt;</a></li>
+                       </s:if>
+                       <s:else>
+                        <li><a href="javascript:void(0)" onclick="goPage(<s:property value='#request.page.totalPageCount'/>,3)">&gt;&gt;</a></li>
+                       </s:else> 
+                      <li>
+                      	<s:if test="#request.page.currentPageNo==#request.page.totalPageCount">	
+                      		<a href="javascript:void(0)">下一页</a>
+                      	</s:if>
+                      	<s:else>
+                      		<a href="javascript:void(0)" onclick="goPage(<s:property value='#request.page.currentPageNo'/>,2)">下一页</a>
+                      	</s:else>
+                      </li>
+                      <li>
+                      	<s:if test="#request.page.currentPageNo==1">
+                      		<a href="javascript:void(0)">上一页</a>
+                      	</s:if>
+                      	<s:else>
+                      		<a href="javascript:void(0)" onclick="goPage(<s:property value='#request.page.currentPageNo'/>,1)">上一页</a>
+                      	</s:else>
+                      </li> 
+                      <s:if test="#request.page.currentPageNo==1">
+                      	<li><a href="javascript:void(0)">&lt;&lt;</a></li>
+                      </s:if>
+                      <s:else>
+                      	<li><a href="javascript:void(0)" onclick="goPage(1,3)">&lt;&lt;</a></li>
+                      </s:else>
+      	          </ul>
+      	        </div></td>
+      	      </tr>
+      	    </table>
+        	</div>
+
+     
+        <!--Table End-->
+</div>
+</body>
+</html>

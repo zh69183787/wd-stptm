@@ -1,0 +1,48 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="service" namespace="/service" extends="cuteframework-default">
+
+		<!-- 显示设备基础信息list页面 -->
+		<action name="showEquipmentList" class="equipmentServiceInfoAction" method="showEquipmentList">
+			<result name="showEquipmentList">/jsp/equipment/service/equipmentList.jsp</result>
+		</action>
+		
+		
+		
+		<!-- 显示list页面 -->
+		<action name="showList" class="equipmentServiceInfoAction" method="showList">
+			<result name="showList">/jsp/equipment/service/equipmentServiceList.jsp</result>
+		</action>
+		
+		<!-- 显示add页面 -->
+		<action name="showAdd" class="equipmentServiceInfoAction" method="showAdd">
+			<result name="showAdd">/jsp/equipment/service/equipmentServiceAdd.jsp</result>
+		</action>
+		
+		<!-- 保存新增-->
+		<action name="saveAdd" class="equipmentServiceInfoAction" method="saveAdd">
+			<result name="saveAdd">/jsp/success.jsp</result>
+		</action>
+		
+		<!-- 显示view页面 -->
+		<action name="showView" class="equipmentServiceInfoAction" method="showView">
+			<result name="showView">/jsp/equipment/service/equipmentServiceView.jsp</result>
+		</action>
+		
+		<!-- 删除 -->
+		<action name="delete" class="equipmentServiceInfoAction" method="delete"/>
+
+		<!-- 显示edit页面 -->
+		<action name="showEdit" class="equipmentServiceInfoAction" method="showEdit">
+			<result name="showEdit">/jsp/equipment/service/equipmentServiceEdit.jsp</result>
+		</action>
+
+		<!-- 保存修改 -->
+		<action name="saveEdit" class="equipmentServiceInfoAction" method="saveEdit">
+			<result name="saveEdit">/jsp/success.jsp</result>
+		</action>
+	</package>
+</struts>
+	

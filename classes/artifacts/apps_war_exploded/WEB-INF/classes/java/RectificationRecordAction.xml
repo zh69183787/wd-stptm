@@ -1,0 +1,29 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="rectificationRecord" namespace="/rectificationRecord" extends="cuteframework-default">
+
+
+		<!-- 添加整改记录-->
+		<action name="add" class="rectificationRecordAction" method="add">
+			<result>/rectificationRecord/editSuccess.jsp</result>
+		</action>
+		<action name="toAdd" class="rectificationRecordAction" method="toAdd">
+			<result name="toAdd">/rectificationRecord/add.jsp</result>
+		</action>
+		<action name="deleteRectificationRecordById" class="rectificationRecordAction" method="deleteRectificationRecordById"></action>
+		<action name="findRectificationRecordByPage" class="rectificationRecordAction" method="findRectificationRecordByPage">
+			<result>/rectificationRecord/list.jsp</result>
+		</action>
+		<action name="findRectificationRecordById" class="rectificationRecordAction" method="findRectificationRecordById">
+			<result name="edit">/rectificationRecord/edit.jsp</result>
+			<result name="view">/rectificationRecord/view.jsp</result>
+		</action>
+		<action name="updateRectificationRecordById" class="rectificationRecordAction" method="updateRectificationRecordById">
+			<result>/rectificationRecord/editSuccess.jsp</result>
+		</action>
+		
+	</package>
+</struts>
+	

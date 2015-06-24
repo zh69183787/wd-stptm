@@ -1,0 +1,36 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="HrBInfo" namespace="/sthr" extends="cuteframework-default">
+
+		<action name="addHrBInfo" class="hrBInfoAction" method="addHrBInfo">
+		    <result>/sthr/baseAdd.jsp</result>
+		</action>
+		<action name="deleteHrBInfo" class="hrBInfoAction" method="deleteHrBInfo"/>
+		<action name="findHrBInfoById" class="hrBInfoAction" method="findHrBInfoById">
+		    <result name="edit">/sthr/baseEdit.jsp</result>
+		    <result name="view">/sthr/baseView.jsp</result>
+		</action>
+		<action name="findHrBInfoByPage" class="hrBInfoAction" method="findHrBInfoByPage">
+		    <result>/sthr/baseList.jsp</result>
+		</action>
+		<action name="updateHrBInfoByHrId" class="hrBInfoAction" method="updateHrBInfoByHrId">
+		    <result>/sthr/editSuccess.jsp</result>
+		</action>
+
+        <action name="toAdd" class="hrBInfoAction" method="toAdd">
+			<result>/sthr/baseAdd.jsp</result>
+		</action>
+		
+		<action name="deleteByHrId" class="hrBInfoAction" >
+		    <result>/sthr/baseList.jsp</result>	
+		</action>
+		<action name="updateHrBInfoList" class="hrBInfoAction" method="updateHrBInfoList"/>
+		
+		<action name="exportExcel" class="hrBInfoAction" />
+		
+		<action name="changeLimit" class="hrBInfoAction" method="changeLimit"/>
+	</package>
+</struts>
+	

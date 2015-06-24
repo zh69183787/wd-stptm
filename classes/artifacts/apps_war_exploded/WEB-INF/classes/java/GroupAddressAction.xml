@@ -1,0 +1,11 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="groupaddress" namespace="/groupaddress" extends="cuteframework-default">
+		<!-- 显示列表页面 -->
+		<action name="list" class="groupAddressAction" method="list">
+			<result name="list">/jsp/groupaddress/list.jsp</result>
+		</action>
+	</package>
+</struts>

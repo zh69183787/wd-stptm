@@ -1,0 +1,38 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="member" namespace="/member" extends="cuteframework-default">
+
+
+		<!-- 添加团成员信息-->
+		<action name="add" class="memberAction" method="add">
+			<result name="add" type="redirectAction">toAdd.action</result>
+		</action>
+		<action name="toAdd" class="memberAction" method="toAdd">
+			<result name="toAdd">/informatization/group/baseAdd.jsp</result>
+		</action>
+		
+		<action name="findGroupMemberByPage" class="memberAction" method="findGroupMemberByPage">
+			<result name="findGroupMemberByPage">/informatization/group/baseList.jsp</result>
+		</action>
+		
+		<action name="findGroupMemberById" class="memberAction" method="findGroupMemberById">
+		    <result name="edit">/informatization/group/baseEdit.jsp</result>
+		    <result name="view">/informatization/group/baseView.jsp</result>
+		</action>
+		
+		<action name="updateGroupMemberId" class="memberAction" method="updateGroupMemberId">
+		    <result>/informatization/group/editSuccess.jsp</result>
+		</action>
+		
+		<action name="countAll" class="memberAction" method="countAll">
+		
+		</action>
+		
+		<action name="deleteData" class="memberAction" method="deleteData"></action>
+		
+	</package>
+
+</struts>
+	

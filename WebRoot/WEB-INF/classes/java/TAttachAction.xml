@@ -1,0 +1,20 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="TAttachCommon" namespace="/tAttach" extends="cuteframework-default">
+
+		<action name="addTAttach" class="commonTAttachAction" method="addTAttach"/>
+		<action name="deleteTAttach" class="commonTAttachAction" method="deleteTAttach"/>
+		<action name="findTAttachById" class="commonTAttachAction" method="findTAttachById"/>
+		<action name="findTAttachByPage" class="commonTAttachAction" method="findTAttachByPage"/>
+		<action name="updateTAttach" class="commonTAttachAction" method="updateTAttach"/>
+
+		<action name="findTAttachByGroupID" class="commonTAttachAction" method="findTAttachByGroupID"/>
+		<action name="deleteTAttachById" class="commonTAttachAction" method="deleteTAttachById"/>
+		<action name="downloadFile" class="commonTAttachAction" method="downloadFile"/>
+		<action name="upload" class="commonTAttachAction" method="fileUpload"/>
+
+	</package>
+</struts>
+	

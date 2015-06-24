@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- begin-user-doc -->
+	<!-- end-user-doc -->
+	
+	<!-- =================================================================== -->
+	<!-- DAO Impl Definition                                                 -->
+	<!-- =================================================================== -->
+
+	<bean id="hrExtInfoDaoImpl" parent="abstractHibernateDao"
+		class="com.wonders.stpt.sthr.HrExtInfo.dao.impl.HrExtInfoDaoImpl">
+	</bean>
+	
+	<bean id="hrExtInfoServiceImpl"
+		class="com.wonders.stpt.sthr.HrExtInfo.service.impl.HrExtInfoServiceImpl">
+		<property name="hrExtInfoDao" ref="hrExtInfoDaoImpl" />
+	</bean>
+	
+	<bean id="hrExtInfoService" parent="basicTxProxy">
+		<property name="target" ref="hrExtInfoServiceImpl" />
+	</bean>
+	
+	<bean name="hrExtInfoAction"
+		class="com.wonders.stpt.sthr.HrExtInfo.action.HrExtInfoAction"
+		singleton="false">
+		<property name="hrExtInfoService" ref="hrExtInfoService"></property>	
+	</bean>
+
+</beans>
+	

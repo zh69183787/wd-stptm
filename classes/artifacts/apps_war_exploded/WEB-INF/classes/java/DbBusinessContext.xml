@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- begin-user-doc -->
+	<!-- end-user-doc -->
+	
+	<!-- =================================================================== -->
+	<!-- DAO Impl Definition                                                 -->
+	<!-- =================================================================== -->
+
+	<bean id="dbBusinessDaoImpl" parent="abstractHibernateDao"
+		class="com.wonders.stpt.dbBusiness.dao.impl.DbBusinessDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory2"></property>
+	</bean>
+	
+	<bean id="dbBusinessServiceImpl"
+		class="com.wonders.stpt.dbBusiness.service.impl.DbBusinessServiceImpl">
+		<property name="dbBusinessDao" ref="dbBusinessDaoImpl" />
+	</bean>
+	
+	<bean id="dbBusinessService" parent="basicTxProxy">
+		<property name="target" ref="dbBusinessServiceImpl" />
+	</bean>
+	
+	<bean name="dbBusinessAction"
+		class="com.wonders.stpt.dbBusiness.action.DbBusinessAction"
+		singleton="false">
+		<property name="dbBusinessService" ref="dbBusinessService"></property>	
+	</bean>
+
+</beans>
+	

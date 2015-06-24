@@ -1,0 +1,20 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="TAttach" namespace="/accidentCase" extends="cuteframework-default">
+
+		<action name="addTAttach" class="tAttachAction" method="addTAttach"/>
+		<action name="deleteTAttach" class="tAttachAction" method="deleteTAttach"/>
+		<action name="findTAttachById" class="tAttachAction" method="findTAttachById"/>
+		<action name="findTAttachByPage" class="tAttachAction" method="findTAttachByPage"/>
+		<action name="updateTAttach" class="tAttachAction" method="updateTAttach"/>
+
+		<action name="findTAttachByGroupID" class="tAttachAction" method="findTAttachByGroupID"/>
+		<action name="deleteTAttachById" class="tAttachAction" method="deleteTAttachById"/>
+		<action name="downloadFile" class="tAttachAction" method="downloadFile"/>
+	
+
+	</package>
+</struts>
+	

@@ -1,0 +1,33 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="newMedia" namespace="/newMedia" extends="cuteframework-default">
+
+
+		<!-- 添加干部成员信息-->
+		<action name="add" class="newMediaAction" method="add">
+			<result name="add" type="redirectAction">toAdd.action</result>
+		</action>
+		<action name="toAdd" class="newMediaAction" method="toAdd">
+			<result name="toAdd">/informatization/newMedia/baseAdd.jsp</result>
+		</action>
+		
+		<action name="findGroupNewMediaByPage" class="newMediaAction" method="findGroupNewMediaByPage">
+			<result name="findGroupNewMediaByPage">/informatization/newMedia/baseList.jsp</result>
+		</action>
+		
+		<action name="findGroupNewMediaById" class="newMediaAction" method="findGroupNewMediaById">
+		    <result name="edit">/informatization/newMedia/baseEdit.jsp</result>
+		    <result name="view">/informatization/newMedia/baseView.jsp</result>
+		</action>
+		
+		<action name="updateGroupNewMediaId" class="newMediaAction" method="updateGroupNewMediaId">
+		    <result>/informatization/newMedia/editSuccess.jsp</result>
+		</action>
+		<action name="deleteData" class="newMediaAction" method="deleteData"/>
+
+	</package>
+
+</struts>
+	

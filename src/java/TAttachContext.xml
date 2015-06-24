@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- begin-user-doc -->
+	<!-- end-user-doc -->
+	
+	<!-- =================================================================== -->
+	<!-- DAO Impl Definition                                                 -->
+	<!-- =================================================================== -->
+
+	<bean id="commonTAttachDaoImpl" parent="abstractHibernateDao"
+		class="com.wonders.stpt.TAttach.dao.impl.TAttachDaoImpl">
+	</bean>
+	
+	<bean id="commonTAttachServiceImpl"
+		class="com.wonders.stpt.TAttach.service.impl.TAttachServiceImpl">
+		<property name="attachDao" ref="commonTAttachDaoImpl" />
+	</bean>
+	
+	<bean id="commonTAttachService" parent="basicTxProxy">
+		<property name="target" ref="commonTAttachServiceImpl" />
+	</bean>
+	
+	<bean name="commonTAttachAction"
+		class="com.wonders.stpt.TAttach.action.TAttachAction"
+		singleton="false">
+		<property name="attachService" ref="commonTAttachService"></property>	
+	</bean>
+
+</beans>
+	

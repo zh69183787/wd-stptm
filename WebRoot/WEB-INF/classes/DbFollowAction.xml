@@ -1,0 +1,58 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="DbFollow" namespace="/dbFollow" extends="cuteframework-default">
+        <action name="toFollowAdd" class="dbFollowAction" method="toFollowAdd">
+			<result>/dbFollow/addFollow.jsp</result>
+		</action>
+		<action name="saveFollowAdd" class="dbFollowAction" method="saveFollowAdd">
+			<result>/dbFollow/editSuccess.jsp</result>
+		</action>
+		
+		<action name="findDeptByName" class="dbFollowAction" method="findDeptByName"/>
+		
+		<action name="toFollowEdit" class="dbFollowAction" method="toFollowEdit">
+			<result>/dbFollow/editFollow.jsp</result>
+		</action>
+		
+		<action name="saveFollowEdit" class="dbFollowAction" method="saveFollowEdit">
+			<result>/dbFollow/editSuccess.jsp</result>
+		</action>
+		
+		<action name="findDbFollowByPage" class="dbFollowAction" method="findDbFollowByPage">
+			<result>/dbFollow/followList.jsp</result>
+		</action>
+		
+		<action name="deleteDbFollow" class="dbFollowAction" method="deleteDbFollow"/>
+		
+		<action name="findDbFollowChildByPage" class="dbFollowAction" method="findDbFollowChildByPage">
+			<result>/dbFollow/followChildList.jsp</result>
+		</action>
+		
+		<action name="findFollowPlanList" class="dbFollowAction" method="findFollowPlanList">
+			<result>/dbFollow/followPlanList.jsp</result>
+		</action>
+		
+		<action name="saveFollowPlan" class="dbFollowAction" method="saveFollowPlan">
+			<result>/dbFollow/editSuccess.jsp</result>
+		</action>
+		
+		<action name="toFollowView" class="dbFollowAction" method="toFollowView">
+			<result>/dbFollow/viewFollow.jsp</result>
+		</action>
+		
+		<action name="finishFollow" class="dbFollowAction" method="finishFollow">
+			<result>/dbFollow/editSuccess.jsp</result>
+		</action>
+		
+		<action name="simpleFollow" class="dbFollowAction" method="simpleFollow">
+			<result>/dbFollow/simpleFollow.jsp</result>
+		</action>
+		
+		<action name="saveSimpleFollow" class="dbFollowAction" method="saveSimpleFollow">
+			<result>/dbFollow/editSuccess.jsp</result>
+		</action>
+	</package>
+</struts>
+	

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- begin-user-doc -->
+	<!-- end-user-doc -->
+
+	<!--
+		===================================================================
+	-->
+	<!--
+		DAO Impl Definition
+	-->
+	<!--
+		===================================================================
+	-->
+
+	<bean id="assetTaskDaoImpl" parent="abstractHibernateDao" class="com.wonders.stpt.task.dao.impl.AssetTaskDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="assetTaskServiceImpl" class="com.wonders.stpt.task.service.impl.AssetTaskServiceImpl">
+		<property name="assetTaskDao" ref="assetTaskDaoImpl" />
+	</bean>
+
+	<bean id="assetTaskService" parent="basicTxProxy">
+		<property name="target" ref="assetTaskServiceImpl" />
+	</bean>
+
+	<bean name="assetTaskAction" class="com.wonders.stpt.task.action.AssetTaskAction"
+		singleton="false">
+		<property name="assetTaskService" ref="assetTaskService"></property>
+		<property name="assetInfoService" ref="assetInfoService"></property>
+		<property name="assetTaskCheckService" ref="assetTaskCheckService"></property>
+		<property name="supplierService" ref="supplierService"></property>
+		<property name="userService" ref="userService"></property>		
+	</bean>
+
+</beans>
+	

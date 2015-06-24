@@ -1,0 +1,45 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="HolConfig" namespace="/holConfig" extends="cuteframework-default">
+
+		<!-- 显示节假日列表 -->
+		<action name="showList" class="holConfigAction" method="showList">
+			<result>/annualLeave/holConfig/holConfigList.jsp</result>
+		</action>
+
+		<!-- 显示节假日新增 -->
+		<action name="showAdd" class="holConfigAction" method="showAdd">
+			<result>/annualLeave/holConfig/holConfigAdd.jsp</result>
+		</action>
+		
+		<!-- 显示节假日编辑 -->
+		<action name="showEdit" class="holConfigAction" method="showEdit">
+			<result>/annualLeave/holConfig/holConfigEdit.jsp</result>
+		</action>
+
+		<!-- 保存节假日 -->
+		<action name="saveHolConfig" class="holConfigAction" method="saveHolConfig"></action>
+		
+		<!-- 保存节假日 -->
+		<action name="saveEditHolConfig" class="holConfigAction" method="saveEditHolConfig"></action>
+		
+		<!-- 删除节假日 -->
+		<action name="deleteHolConfig" class="holConfigAction" method="deleteHolConfig"></action>
+		
+		<!-- 显示批量上传页面-->
+		<action name="showUpload" class="holConfigAction" method="showUpload">
+			<result>/annualLeave/holConfig/fileUpload.jsp</result>
+		</action>
+		<!-- 批量上传文件 -->
+		<action name="batchUploadHolConfig" class="holConfigAction" method="batchUploadHolConfig"></action>
+
+		<!-- 下载模板-->
+		<action name="downloadTemplete" class="holConfigAction" method="downloadTemplete"></action>
+
+		<action name="findHolConfigDays" class="holConfigAction" method="findHolConfigDays"></action>
+		
+	</package>
+</struts>
+	

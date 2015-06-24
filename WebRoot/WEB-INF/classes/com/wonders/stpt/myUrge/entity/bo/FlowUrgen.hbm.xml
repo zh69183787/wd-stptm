@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.wonders.stpt.myUrge.entity.bo.FlowUrgen" table="T_MSG_FLOWURGEN" dynamic-update="true" >
+
+        <id name="gid" column="gid" type="java.lang.String" unsaved-value="0" >
+            <generator class="uuid.hex"></generator>
+        </id>
+
+        <property name="processname" type="java.lang.String" update="true" insert="true" column="processname" length="200" />
+        
+        <property name="incident" type="java.lang.String" update="true" insert="true" column="incident" length="20" />
+        
+        <property name="taskid" type="java.lang.String" update="true" insert="true" column="taskid" length="200" />
+
+        <property name="urgened_user" type="java.lang.Long" update="true" insert="true" column="urgened_user" />
+        
+        <property name="urgened_username" type="java.lang.String" update="true" insert="true" column="urgened_username" length="200" />
+        
+        <property name="urgen_time" type="java.lang.String" update="true" insert="true" column="urgen_time" length="19" />
+        
+        <property name="send_user" type="java.lang.Long" update="true" insert="true" column="send_user" />
+        
+        <property name="send_username" type="java.lang.String" update="true" insert="true" column="send_username" length="200" />
+        
+        <property name="urgened_mb" type="java.lang.String" update="true" insert="true" column="urgened_mb" length="200" />
+        
+        <property name="send_content" type="java.lang.String" update="true" insert="true" column="send_content" length="4000" />
+
+    </class>
+
+</hibernate-mapping>

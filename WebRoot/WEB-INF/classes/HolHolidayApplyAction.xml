@@ -1,0 +1,45 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="HolHolidayApply" namespace="/holHolidaysApply" extends="cuteframework-default">
+
+		
+		<action name="showHolHolidaysApplyAdd" class="holHolidayApplyAction" method="showHolHolidaysApplyAdd">
+			<result>/annualLeave/holHolidaysApply/holidaysApplyAdd.jsp</result>
+		</action>
+
+		<action name="saveHolidaysApply" class="holHolidayApplyAction" method="saveHolidaysApply">
+			<result type="redirect">findHolHolidayApplyByPage.action</result>
+		</action>
+
+		<action name="findHolHolidayApplyByPage" class="holHolidayApplyAction" method="findHolHolidayApplyByPage">
+			<result>/annualLeave/holHolidaysApply/holidaysApplyList.jsp</result>
+		</action>
+
+		<action name="findHolHolidayApplyByPageForApprove" class="holHolidayApplyAction" method="findHolHolidayApplyByPageForApprove">
+			<result>/annualLeave/holHolidaysApply/holidaysApplyListForApprove.jsp</result>
+		</action>
+
+		<action name="findHolHolidayApplyByPageForDept" class="holHolidayApplyAction" method="findHolHolidayApplyByPageForDept">
+			<result>/annualLeave/holHolidaysApply/holidaysApplyListForDept.jsp</result>
+		</action>
+
+		<action name="submitApply" class="holHolidayApplyAction" method="submitApply"/>
+
+		<action name="showApplyView" class="holHolidayApplyAction" method="showApplyView">
+			<result>/annualLeave/holHolidaysApply/holidaysApplyView.jsp</result>
+		</action>
+
+
+        <action name="choosePerson" class="holHolidayApplyAction" method="choosePerson">
+            <result>/annualLeave/choosePerson.jsp</result>
+        </action>
+        <action name="loadPersonMenu" class="holHolidayApplyAction" method="loadPersonMenu"></action>
+		<!-- 初始化导入数据用 -->		
+		<!--<action name="setHolidayData" class="holHolidayApplyAction" method="setHolidayData"/>-->
+		
+		
+	</package>
+</struts>
+	

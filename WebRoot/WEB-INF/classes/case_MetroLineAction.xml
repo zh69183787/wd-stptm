@@ -1,0 +1,21 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="MetroLine" namespace="/accidentCase" extends="cuteframework-default">
+
+		<action name="addMetroLine" class="metroLineAction" method="addMetroLine"/>
+		<action name="deleteMetroLine" class="metroLineAction" method="deleteMetroLine"/>
+		<action name="findMetroLineById" class="metroLineAction" method="findMetroLineById"/>
+		<action name="findMetroLineByPage" class="metroLineAction" method="findMetroLineByPage"/>
+		<action name="updateMetroLine" class="metroLineAction" method="updateMetroLine"/>
+
+
+
+		<action name="metroLineAction" class="caseMetroLineAction" ></action>
+		
+		
+
+	</package>
+</struts>
+	

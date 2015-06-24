@@ -1,0 +1,46 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="TFlowEvaluationItem" namespace="/evaluate" extends="cuteframework-default">
+	
+	<!-- 
+		<action name="addTFlowEvaluationItem" class="tFlowEvaluationItemAction" method="addTFlowEvaluationItem"/>
+		<action name="deleteTFlowEvaluationItem" class="tFlowEvaluationItemAction" method="deleteTFlowEvaluationItem"/>
+		<action name="findTFlowEvaluationItemById" class="tFlowEvaluationItemAction" method="findTFlowEvaluationItemById"/>
+		<action name="findTFlowEvaluationItemByPage" class="tFlowEvaluationItemAction" method="findTFlowEvaluationItemByPage"/>
+		<action name="updateTFlowEvaluationItem" class="tFlowEvaluationItemAction" method="updateTFlowEvaluationItem"/>
+	 -->
+	 
+		<!-- 显示列表 页面-->
+		<action name="showEvaluationItem" class="tFlowEvaluationItemAction" method="showEvaluationItem">
+			<result name="showEvaluationItem">/evaluate/dict_list.jsp</result>
+		</action>
+		
+		<!-- 显示添加页面 -->
+		<action name="showAddPageItem" class="tFlowEvaluationItemAction" method="showAddPage">
+			<result name="showAddPage">/evaluate/dict_add.jsp</result>
+		</action>
+		
+		<!-- 保存新增 -->
+		<action name="saveEvaluationItem" class="tFlowEvaluationItemAction" method="saveEvaluationItem">
+			<result name="saveEvaluationItem">/evaluate/success.jsp</result>
+		</action>
+		<!-- 删除 -->
+		<action name="deleteEvaluationItem" class="tFlowEvaluationItemAction" method="deleteEvaluationItem"/>
+		
+		<!-- 显示修改页面 -->
+		<action name="showEditPageItem" class="tFlowEvaluationItemAction" method="showEditPage">
+			<result name="showEditPage">/evaluate/dict_edit.jsp</result>
+		</action>
+		
+		<!-- 保存修改 -->
+		<action name="updateEvaluationItem" class="tFlowEvaluationItemAction" method="updateEvaluationItem">
+			<result name="updateEvaluationItem">/evaluate/dict_edit.jsp</result>
+		</action>
+		
+		
+
+	</package>
+</struts>
+	

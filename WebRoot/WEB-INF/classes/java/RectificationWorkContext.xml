@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="rectificationWorkDao"  parent="abstractHibernateDao"
+	class="com.wonders.stpt.rectification.rectificationWork.dao.impl.RectificationWorkDaoImpl">
+	
+	</bean>
+
+	<bean id="rectificationWorkServiceImpl" class="com.wonders.stpt.rectification.rectificationWork.service.impl.RectificationWorkServiceImpl">
+		<property name="rectificationWorkDao" ref="rectificationWorkDao"></property>
+	</bean>
+
+	<bean id="rectificationWorkService" parent="basicTxProxy">
+		<property name="target" ref="rectificationWorkServiceImpl"></property>
+	</bean>
+
+	<bean id="rectificationWorkAction"  class="com.wonders.stpt.rectification.rectificationWork.action.RectificationWorkAction">
+		<property name="rectificationWorkService" ref="rectificationWorkService"></property>
+	</bean>
+	
+	<bean id="workAndRecordAction" class="com.wonders.stpt.rectification.rectificationWork.action.RectificationWorkAction">
+		<property name="rectificationWorkService" ref="rectificationWorkService"></property>
+		<property name="recordService" ref="recordService"></property>
+	</bean>
+
+</beans>
+	
+
+	

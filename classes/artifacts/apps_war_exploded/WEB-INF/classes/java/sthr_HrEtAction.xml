@@ -1,0 +1,40 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="HrEt" namespace="/sthr" extends="cuteframework-default">
+
+		
+		<action name="deleteHrEt" class="hrEtAction" method="deleteHrEt"/>
+		<action name="findHrEtById" class="hrEtAction" method="findHrEtById"/>
+		<action name="updateHrEt" class="hrEtAction" method="updateHrEt"/>
+		
+		<action name="addHrEt" class="hrEtAction" method="addHrEt">
+			<result name="addHrEt">/sthr/editSuccess.jsp</result>
+			<result name="failToAdd">/sthr/extTypeAdd.jsp</result>
+		</action>
+		<action name="showAddTypePage" class="hrEtAction" method="showAddPage">
+			<result name="showAddPage">/sthr/extTypeAdd.jsp</result>
+		</action>
+		<action name="findHrEtByPage" class="hrEtAction" method="findHrEtByPage">
+			<result name="findHrEtByPage">/sthr/extTypeList.jsp</result>
+		</action>
+		<action name="deleteHrEtById" class="hrEtAction" method="deleteHrEtById">
+			<result name="deleteHrEtById" type="redirect-action">findHrEtByPage</result>
+		</action>
+		
+		<action name="findHretByHretId" class="hrEtAction" method="findHretByHretId">
+			<result name="findHretByHretId">/sthr/extTypeView.jsp</result>
+		</action>
+		<action name="showHrEtEditPage" class="hrEtAction" method="showHrEtEditPage">
+			<result name="showHrEtEditPage">/sthr/extTypeEdit.jsp</result>
+		</action>
+		<action name="editHrEt" class="hrEtAction" method="editHrEt">
+			<result name="editHrEt">/sthr/editSuccess.jsp</result>
+			<result name="failToUpdate">/sthr/extTypeEdit.jsp</result>
+		</action>
+		<action name="findAllTypeName" class="hrEtAction" method="findAllTypeName"/>
+		<action name="updateHrEtList" class="hrEtAction" method="updateHrEtList"/>
+	</package>
+</struts>
+	

@@ -1,0 +1,47 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="HrEtD" namespace="/sthr" extends="cuteframework-default">
+
+		
+		<action name="deleteHrEtD" class="hrEtDAction" method="deleteHrEtD"/>
+		<action name="findHrEtDByPage" class="hrEtDAction" method="findHrEtDByPage"/>
+		<action name="updateHrEtD" class="hrEtDAction" method="updateHrEtD"/>
+		
+		<action name="findHrEtDByHrEtId" class="hrEtDAction" method="findHrEtDByHrEtId">
+			<result name="findHrEtDByHrEtId">/sthr/extDataList.jsp</result>
+			<result name="extAdd">/sthr/extAdd.jsp</result>
+			<result name="extEdit">/sthr/extEdit.jsp</result>
+			<result name="extView">/sthr/extView.jsp</result>
+		</action>
+		<action name="showAddDatePage" class="hrEtDAction" method="showAddPage">
+			<result name="showAddPage">/sthr/extDataAdd.jsp</result>
+		</action>
+		<action name="addHrEtD" class="hrEtDAction" method="addHrEtD">
+			<result name="addHrEtD">/sthr/editSuccess.jsp</result>
+			<result name="faliToAdd">/sthr/extDataAdd.jsp</result>
+		</action>
+		
+		<action name="findHrEtDById" class="hrEtDAction" method="findHrEtDById">
+			<result name="findHrEtDById">/sthr/extDataView.jsp</result>
+		</action>
+		
+		<action name="deleteHrEtDById" class="hrEtDAction" method="deleteHrEtDById">
+			<result name="deleteHrEtDById" type="redirect-action">
+				<param name="actionName">findHrEtDByHrEtId</param>
+				<param name="hretId">${hretId}</param>
+			</result>
+		</action>
+		
+		<action name="showEditPage" class="hrEtDAction" method="showEditPage">
+			<result name="showEditPage">/sthr/extDataEdit.jsp</result>
+		</action>
+		<action name="editHrEtD" class="hrEtDAction" method="editHrEtD">
+			<result name="editHrEtD">/sthr/editSuccess.jsp</result>
+			<result name="faliToAdd">/sthr/extDataEdit.jsp</result>
+		</action>	
+		<action name="updateHrEtDList" class="hrEtDAction" method="updateHrEtDList"/>		
+	</package>
+</struts>
+	

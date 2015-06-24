@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- begin-user-doc -->
+	<!-- end-user-doc -->
+
+	<!--
+		===================================================================
+	-->
+	<!--
+		DAO Impl Definition
+	-->
+	<!--
+		===================================================================
+	-->
+
+	<bean id="equipmentInfoDaoImpl" parent="abstractHibernateDao"
+		class="com.wonders.stpt.equipment.info.dao.impl.EquipmentInfoDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="equipmentInfoServiceImpl"
+		class="com.wonders.stpt.equipment.info.service.impl.EquipmentInfoServiceImpl">
+		<property name="equipmentInfoDao" ref="equipmentInfoDaoImpl" />
+	</bean>
+
+	<bean id="equipmentInfoService" parent="basicTxProxy">
+		<property name="target" ref="equipmentInfoServiceImpl" />
+	</bean>
+
+	<bean name="equipmentInfoAction" class="com.wonders.stpt.equipment.info.action.EquipmentInfoAction" singleton="false">
+		<property name="equipmentInfoService" ref="equipmentInfoService"></property>
+		<property name="equipmentParametersService" ref="equipmentParametersService"></property>
+		<property name="assetInfoService" ref="assetInfoService"></property>
+		<property name="supplierService" ref="supplierService"></property>
+	</bean>
+
+</beans>
+	

@@ -1,0 +1,120 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="assetInfo" namespace="/asset" extends="cuteframework-default">
+
+
+		<!-- 显示资产清册维护list页面 -->
+		
+		
+		<action name="showInventory" class="assetInfoAction" method="showInventory">
+			<result name="showInventory">/jsp/asset/assetInventory.jsp</result>
+		</action>
+
+		<!-- 显示资产动态管理list页面 -->
+		<action name="showDynamicManagement" class="assetInfoAction" method="showDynamicManagement">
+			<result name="showDynamicManagement">/jsp/asset/assetDynamicManangement.jsp</result>
+		</action>
+		
+		<!-- 资产入册 -->
+		<action name="inventory" class="assetInfoAction" method="inventory"/>
+		
+		<!-- 显示add页面 -->
+		<action name="showAdd" class="assetInfoAction" method="showAdd">
+			<result name="showAdd">/jsp/asset/assetAdd.jsp
+			</result>
+		</action>
+
+		<!-- 查询资产是否存在 -->
+		<action name="findAssetInfoByAssetId" class="assetInfoAction"
+			method="findAssetInfoByAssetId" />
+
+		<!-- 保存新增 -->
+		<action name="saveAdd" class="assetInfoAction" method="saveAdd">
+			<result name="saveAdd">/jsp/success.jsp</result>
+			<result name="fail">/jsp/asset/assetAdd.jsp
+			</result>
+		</action>
+
+		<!-- 删除 -->
+		<action name="delete" class="assetInfoAction" method="delete" />
+
+		<!-- 显示view页面 -->
+		<action name="showView" class="assetInfoAction" method="showView">
+			<result name="showView">/jsp/asset/assetView.jsp
+			</result>
+		</action>
+
+		<!-- 查询中类 -->
+		<action name="findTypeByCodeInfoId" class="assetInfoAction"
+			method="findTypeByCodeInfoId" />
+
+
+		<!-- 显示edit页面 -->
+		<action name="showEdit" class="assetInfoAction" method="showEdit">
+			<result name="showEdit">/jsp/asset/assetEdit.jsp
+			</result>
+		</action>
+		
+		<!-- 显示edit页面 -->
+		<action name="showHistoryEdit" class="assetInfoAction" method="showHistoryEdit">
+			<result name="showHistoryEdit">/jsp/asset/assetEdit.jsp
+			</result>
+		</action>
+		
+		
+		
+		<!-- 保存修改-->
+		<action name="saveEdit" class="assetInfoAction" method="saveEdit">
+			<result name="saveEdit">/jsp/success.jsp</result>
+		</action>
+
+		<!-- 根据线路查询车站 -->
+		<action name="findStationByLine" class="assetInfoAction"
+			method="findStationByLine"></action>
+
+
+		<!-- 显示历史记录-->
+		<action name="showAssetInfoHistory" class="assetInfoAction"
+			method="showAssetInfoHistory">
+			<result name="showAssetInfoHistory">/jsp/asset/assetHistoryView.jsp
+			</result>
+		</action>
+
+		<!--显示上传页面  -->
+		<action name="showFileUpload" class="assetInfoAction" method="showFileUpload">
+			<result name="showFileUpload">/jsp/asset/fileUpload.jsp
+			</result>
+		</action>
+
+		<!-- 上传文件 -->
+		<action name="fileUpload" class="assetInfoAction" method="fileUpload"/>
+
+		<!-- 上传下载 -->
+		<action name="downloadFile" class="assetInfoAction" method="downloadFile"/>
+		
+		<!-- 导出资产清册维护Excel -->
+		<action name="exportExcel" class="assetInfoAction"> 
+               <param name="bufferSize">1024</param> 
+            <result name="error">/WEB-INF/error.jsp</result>
+		</action> 
+		
+		<!-- 导出资产动态管理Excel -->
+		<action name="DynamicManagementExportExcel" class="assetInfoAction"> 
+               <param name="bufferSize">1024</param>
+            <result name="error">/WEB-INF/error.jsp</result>
+		</action> 
+		
+		
+		<!-- 资产清册 -->
+		<action name="getAssetInventoryList" class="assetInfoAction" method="getAssetInventoryList"> 
+            <result name="success">/jsp/asset/assetInventoryList.jsp</result>
+		</action> 
+		
+		<action name="findTypeAndValueByCodeInfoId" class="assetInfoAction"	method="findTypeAndValueByCodeInfoId" />
+		
+	</package>
+
+</struts>
+	

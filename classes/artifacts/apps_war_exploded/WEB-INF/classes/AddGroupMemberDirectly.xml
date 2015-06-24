@@ -1,0 +1,33 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="memberDirectly" namespace="/memberDirectly" extends="cuteframework-default">
+
+
+		<!-- 添加干部成员信息-->
+		<action name="add" class="memberDirectlyAction" method="add">
+			<result name="add" type="redirectAction">toAdd.action</result>
+		</action>
+		<action name="toAdd" class="memberDirectlyAction" method="toAdd">
+			<result name="toAdd">/informatization/memberDirectly/baseAdd.jsp</result>
+		</action>
+		
+		<action name="findGroupMemberDirectlyByPage" class="memberDirectlyAction" method="findGroupMemberDirectlyByPage">
+			<result name="findGroupMemberDirectlyByPage">/informatization/memberDirectly/baseList.jsp</result>
+		</action>
+		
+		<action name="findGroupMemberDirectlyById" class="memberDirectlyAction" method="findGroupMemberDirectlyById">
+		    <result name="edit">/informatization/memberDirectly/baseEdit.jsp</result>
+		    <result name="view">/informatization/memberDirectly/baseView.jsp</result>
+		</action>
+		
+		<action name="updateGroupMemberDirectlyId" class="memberDirectlyAction" method="updateGroupMemberDirectlyId">
+		    <result>/informatization/memberDirectly/editSuccess.jsp</result>
+		</action>
+		<action name="deleteData" class="memberDirectlyAction" method="deleteData"/>
+
+	</package>
+
+</struts>
+	

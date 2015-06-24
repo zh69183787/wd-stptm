@@ -1,0 +1,15 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="EquipmentParameters" namespace="/paramters" extends="cuteframework-default">
+
+		<action name="addEquipmentParameters" class="equipmentParametersAction" method="addEquipmentParameters"/>
+		<action name="deleteEquipmentParameters" class="equipmentParametersAction" method="deleteEquipmentParameters"/>
+		<action name="findEquipmentParametersById" class="equipmentParametersAction" method="findEquipmentParametersById"/>
+		<action name="findEquipmentParametersByPage" class="equipmentParametersAction" method="findEquipmentParametersByPage"/>
+		<action name="updateEquipmentParameters" class="equipmentParametersAction" method="updateEquipmentParameters"/>
+
+	</package>
+</struts>
+	

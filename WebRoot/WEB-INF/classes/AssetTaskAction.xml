@@ -1,0 +1,80 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="task" namespace="/task" extends="cuteframework-default">
+
+		<!-- 显示list页面 -->
+		<action name="showListCommon" class="assetTaskAction" method="showListCommon">
+			<result name="showListCommon">/jsp/task/taskListCommon.jsp</result>
+		</action>
+		
+		<!-- 显示list页面 -->
+		<action name="showListManage" class="assetTaskAction" method="showListManage">
+			<result name="showListManage">/jsp/task/taskListManage.jsp</result>
+		</action>
+		
+		<!-- 显示add页面 -->
+		<action name="showAdd" class="assetTaskAction" method="showAdd">
+			<result name="showAdd">/jsp/task/taskAdd.jsp</result>
+		</action>
+		
+		<!-- 保存新增-->
+		<action name="saveAdd" class="assetTaskAction" method="saveAdd">
+			<result name="saveAdd">/jsp/success.jsp</result>
+		</action>
+		
+		<!-- 显示view页面 -->
+		<action name="showView" class="assetTaskAction" method="showView">
+			<result name="showView">/jsp/task/taskView.jsp</result>
+		</action>
+		
+		<!-- 删除 -->
+		<action name="delete" class="assetTaskAction" method="delete"/>
+
+		<!-- 显示edit页面 -->
+		<action name="showEdit" class="assetTaskAction" method="showEdit">
+			<result name="showEdit">/jsp/task/taskEdit.jsp</result>
+		</action>
+
+		<!-- 保存修改 -->
+		<action name="saveEdit" class="assetTaskAction" method="saveEdit">
+			<result name="saveEdit">/jsp/success.jsp</result>
+		</action>
+
+		<!-- 显示资产搜索条件页面 -->
+		<action name="showAssetSearchPage" class="assetTaskAction" method="showAssetSearchPage">
+			<result name="showAssetSearchPage">/jsp/task/assetList.jsp</result>
+		</action>
+		
+		<!-- 下载xml文件 -->		
+		<action name="downloadAssetTaskAsXML" class="assetTaskAction" method="downloadAssetTaskAsXML"/>
+		
+		
+		<!-- 跳转到文件上传页面 -->		
+		<action name="showUploadPage" class="assetTaskAction" method="showUploadPage">
+			<result name="showUploadPage">/jsp/task/upload.jsp</result>
+		</action>
+		
+		<!-- 上传文件并保存盘点任务结果 -->
+		<action name="uploadFile" class="assetTaskAction" method="uploadFile"/>
+
+
+		<!-- 显示资产盘点结果 -->
+		<action name="showCheckResult" class="assetTaskAction" method="showCheckResult">
+			<result name="showCheckResult">/jsp/task/checkResult.jsp</result>
+		</action>
+		
+		
+		<!-- 获得用户名 -->
+		<action name="findDeptUserName" class="assetTaskAction" method="findDeptUserName"/>
+
+		<!-- 下载txt文件 -->		
+		<action name="downloadAssetTaskAsTXT" class="assetTaskAction" method="downloadAssetTaskAsTXT"/>
+		
+		<!-- 根据扫描器上的pandian.txt生成xml文件 -->	
+		<action name="generateXML" class="assetTaskAction" method="generateXML"/>
+		
+	</package>
+</struts>
+	

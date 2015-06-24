@@ -1,0 +1,43 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="HiddenDangersCorrect" namespace="/hiddenDangersCorrect" extends="cuteframework-default">
+
+		<action name="addHiddenDangersCorrect" class="hiddenDangersCorrectAction" method="addHiddenDangersCorrect">
+		    <result>/hiddenDangersCorrect/editSuccess.jsp</result>
+		</action>
+		<action name="deleteHiddenDangersCorrect" class="hiddenDangersCorrectAction" method="deleteHiddenDangersCorrect"/>
+		<action name="findHiddenDangersCorrectById" class="hiddenDangersCorrectAction" method="findHiddenDangersCorrectById">
+			<result name="edit">/hiddenDangersCorrect/edit.jsp</result>
+		    <result name="view">/hiddenDangersCorrect/view.jsp</result>
+	    </action>
+		<action name="findHiddenDangersCorrectByPage" class="hiddenDangersCorrectAction" method="findHiddenDangersCorrectByPage">
+		    <result>/hiddenDangersCorrect/list.jsp</result>
+		</action>
+		<action name="updateHiddenDangersCorrect" class="hiddenDangersCorrectAction" method="updateHiddenDangersCorrect"/>
+        <action name="toAdd" class="hiddenDangersCorrectAction" method="toAdd">
+			<result>/hiddenDangersCorrect/add.jsp</result>
+		</action>
+		<action name="updateHiddenDangersCorrectById" class="hiddenDangersCorrectAction" method="updateHiddenDangersCorrectById">
+		    <result>/hiddenDangersCorrect/editSuccess.jsp</result>
+		</action>
+		<action name="deleteById" class="hiddenDangersCorrectAction" >
+		    
+		</action>
+		<action name="findOwnerWithFuzzySearch" class="hiddenDangersCorrectAction" method="findOwnerWithFuzzySearch"/>
+
+		<action name="updateCheckState" class="hiddenDangersCorrectAction" />
+
+        <!-- 2015 0323 隐患排查延时记录log -->
+        <action name="findHdcLogByPage" class="hiddenDangersCorrectAction" method="findHdcLogByPage">
+            <result>/hiddenDangersCorrect/logList.jsp</result>
+        </action>
+
+        <action name="findHdcLogById" class="hiddenDangersCorrectAction" method="findHdcLogById">
+            <result>/hiddenDangersCorrect/logView.jsp</result>
+        </action>
+        <!-- 2015 0323 隐患排查延时记录log -->
+	</package>
+</struts>
+	

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<bean id="msgUsermessageDaoDaoImpl" parent="abstractHibernateDao" class="com.wonders.stpt.myNotice.dao.impl.TMsgUsermessageDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory2" />
+	</bean>
+	
+
+	<bean id="tMsgUsermessageServiceImpl" class="com.wonders.stpt.myNotice.service.impl.TMsgUsermessageServiceImpl">
+		<property name="msgUsermessageDao" ref="msgUsermessageDaoDaoImpl" />
+	</bean>
+
+	<bean id="tMsgUsermessageService" parent="basicTxProxy">
+		<property name="target" ref="tMsgUsermessageServiceImpl" />
+	</bean>
+
+	<bean name="myNoticeAction" class="com.wonders.stpt.myNotice.action.TMsgUsermessageAction" singleton="false">
+		<property name="msgUsermessageService" ref="tMsgUsermessageService"></property>
+	</bean>
+
+</beans>
+	
+
+	

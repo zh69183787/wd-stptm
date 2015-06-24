@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- begin-user-doc -->
+	<!-- end-user-doc -->
+	
+	<!-- =================================================================== -->
+	<!-- DAO Impl Definition                                                 -->
+	<!-- =================================================================== -->
+
+	<bean id="holConfigDaoImpl" parent="abstractHibernateDao"
+		class="com.wonders.stpt.annualLeave.dao.impl.HolConfigDaoImpl">
+	</bean>
+	
+	<bean id="holConfigServiceImpl"
+		class="com.wonders.stpt.annualLeave.service.impl.HolConfigServiceImpl">
+		<property name="holConfigDao" ref="holConfigDaoImpl" />
+	</bean>
+	
+	<bean id="holConfigService" parent="basicTxProxy">
+		<property name="target" ref="holConfigServiceImpl" />
+	</bean>
+	
+	<bean name="holConfigAction"
+		class="com.wonders.stpt.annualLeave.action.HolConfigAction"
+		singleton="false">
+		<property name="holConfigService" ref="holConfigService"></property>	
+	</bean>
+
+</beans>
+	

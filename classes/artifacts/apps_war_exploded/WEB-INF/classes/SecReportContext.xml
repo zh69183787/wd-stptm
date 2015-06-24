@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- begin-user-doc -->
+	<!-- end-user-doc -->
+	
+	<!-- =================================================================== -->
+	<!-- DAO Impl Definition                                                 -->
+	<!-- =================================================================== -->
+
+	<bean id="secReportDaoImpl" parent="abstractHibernateDao" class="com.wonders.stpt.securityreport.dao.impl.SecReportDaoImpl">
+	
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="secReportServiceImpl"
+		class="com.wonders.stpt.securityreport.service.impl.SecReportServiceImpl">
+		<property name="secReportDao" ref="secReportDaoImpl" />
+	</bean>
+	
+	<bean id="secReportService" parent="basicTxProxy">
+		<property name="target" ref="secReportServiceImpl" />
+	</bean>
+	
+	<bean name="secReportAction"
+		class="com.wonders.stpt.securityreport.action.SecReportAction"
+		singleton="false">
+		<property name="secReportService" ref="secReportService"></property>	
+	</bean>
+
+</beans>
+	

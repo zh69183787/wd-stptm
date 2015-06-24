@@ -1,0 +1,38 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.custom.i18n.resources" value="fileUpload"></constant>
+	
+	<package name="TConstructionNotice" namespace="/construction" extends="cuteframework-default">
+		<action name="addTConstructionNotice" class="tConstructionNoticeAction" method="addTConstructionNotice"/>
+		<action name="deleteTConstructionNotice" class="tConstructionNoticeAction" method="deleteTConstructionNotice"/>
+		<action name="findTConstructionNoticeById" class="tConstructionNoticeAction" method="findTConstructionNoticeById"/>
+		<action name="findTConstructionNoticeByPage" class="tConstructionNoticeAction" method="findTConstructionNoticeByPage"/>
+		<action name="updateTConstructionNotice" class="tConstructionNoticeAction" method="updateTConstructionNotice"/>
+		<action name="findTConstructionNotice" class="tConstructionNoticeAction" method="findTConstructionNotice">
+			<result>/construction/lookup.jsp</result>
+		</action>
+		<action name="showUploadPage" class="tConstructionNoticeAction" method="showUploadPage">
+			<result>/construction/excelUpload.jsp</result>
+		</action>
+		<action name="UploadAndSavdData" class="tConstructionNoticeAction" method="UploadAndSavdData">
+		</action>
+		
+		<action name="downloadFile" class="tConstructionNoticeAction" method="downloadFile">
+		</action>
+		
+		
+		<action name="findTConstructionNoticeOnly" class="tConstructionNoticeAction" method="findTConstructionNoticeOnly">
+			<result>/construction/lookupOnly.jsp</result>
+		</action>
+		
+		<action name="findConstructionById" class="tConstructionNoticeAction" method="findConstructionById">
+			<result>/construction/detail.jsp</result>
+		</action>
+		
+		<action name="showLineInfo" class="tConstructionNoticeAction" method="showLineInfo"/>
+			
+	</package>
+</struts>
+	

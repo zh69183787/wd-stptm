@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+																	
+
+	<bean name="overtimeAction"
+		class="com.wonders.stpt.overtimeWarn.action.OverTimeAction" singleton="false">
+		<property name="overTimeService" ref="overTimeService" />
+	</bean>
+	
+	<bean id="overTimeService" parent="basicTxProxy">
+		<property name="target" ref="overTimeServiceImpl" />
+	</bean>
+	
+	<bean id="overTimeServiceImpl" class="com.wonders.stpt.overtimeWarn.service.impl.OverTimeServiceImpl">
+		<property name="overTimeDao" ref="overTimeDaoImpl" />
+	</bean>
+	
+	
+	<bean id="overTimeDaoImpl" parent="abstractHibernateDao" class="com.wonders.stpt.overtimeWarn.dao.impl.OverTimeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory2" />
+	</bean>
+
+</beans>

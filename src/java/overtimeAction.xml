@@ -1,0 +1,45 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="overtime" namespace="/overtime" extends="cuteframework-default">
+
+
+		<!-- 显示我的通知列表 -->
+		<!-- 收文 -->
+		<action name="showReceiveList" class="overtimeAction" method="showReceiveList">
+			<result name="showReceiveList">/overtime/receiveList.jsp</result>
+		</action>
+		
+		<!-- 发文 -->
+		<action name="showSendList" class="overtimeAction" method="showSendList">
+			<result name="showSendList">/overtime/sendList.jsp</result>
+		</action>
+		<!-- 呈批 -->
+		<action name="showReceiveDirectiveList" class="overtimeAction" method="showReceiveDirectiveList">
+			<result name="showReceiveDirectiveList">/overtime/receiveDirectiveList.jsp</result>
+		</action>
+		<!-- 合同审批 -->
+		<action name="showSubprocessList" class="overtimeAction" method="showSubprocessList">
+			<result name="showSubprocessList">/overtime/subprocessList.jsp</result>
+		</action>
+		
+		<!-- 直接备案-->
+		<action name="showTaskList" class="overtimeAction" method="showTaskList">
+			<result name="tasklist">/overtime/tasklist.jsp</result>
+		</action>
+		
+		<!-- 维保合同审批-->
+		<action name="showIncidentsList" class="overtimeAction" method="showIncidentsList">
+			<result name="incidentslist">/overtime/incidentslist.jsp</result>
+		</action>
+		
+		<!-- 合同审批（旧） -->
+		<action name="showHtXxList" class="overtimeAction" method="showHtXxList">
+			<result name="htxxlist">/overtime/htxxlist.jsp</result>
+		</action>
+
+	</package>
+
+</struts>
+	

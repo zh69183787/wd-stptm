@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- begin-user-doc -->
+	<!-- end-user-doc -->
+
+	<!--
+		===================================================================
+	-->
+	<!--
+		DAO Impl Definition
+	-->
+	<!--
+		===================================================================
+	-->
+
+	<bean id="equipmentPartsReplaceDaoImpl" parent="abstractHibernateDao"
+		class="com.wonders.stpt.equipment.replace.dao.impl.EquipmentPartsReplaceDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="equipmentPartsReplaceServiceImpl"
+		class="com.wonders.stpt.equipment.replace.service.impl.EquipmentPartsReplaceServiceImpl">
+		<property name="equipmentPartsReplaceDao" ref="equipmentPartsReplaceDaoImpl" />
+	</bean>
+
+	<bean id="equipmentPartsReplaceService" parent="basicTxProxy">
+		<property name="target" ref="equipmentPartsReplaceServiceImpl" />
+	</bean>
+
+	<bean name="equipmentPartsReplaceAction"
+		class="com.wonders.stpt.equipment.replace.action.EquipmentPartsReplaceAction"
+		singleton="false">
+		<property name="equipmentPartsReplaceService" ref="equipmentPartsReplaceService"></property>
+	</bean>
+
+</beans>
+	

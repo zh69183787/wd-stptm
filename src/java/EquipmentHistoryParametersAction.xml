@@ -1,0 +1,54 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="paramCheck" namespace="/paramCheck" extends="cuteframework-default">
+
+
+		<!-- 显示设备基础信息list页面 -->
+		<action name="showEquipmentList" class="equipmentHistoryParametersAction" method="showEquipmentList">
+			<result name="showEquipmentList">/jsp/equipment/paramCheck/equipmentList.jsp</result>
+		</action>
+		
+		<!-- 显示list页面 -->
+		<action name="showList" class="equipmentHistoryParametersAction" method="showList">
+			<result name="showList">/jsp/equipment/paramCheck/paramCheckList.jsp</result>
+		</action>
+		
+		<!-- 显示add页面 -->
+		<action name="showAdd" class="equipmentHistoryParametersAction" method="showAdd">
+			<result name="showAdd">/jsp/equipment/paramCheck/paramCheckAdd.jsp</result>
+		</action>
+		
+		<!-- 保存新增-->
+		<action name="saveAdd" class="equipmentHistoryParametersAction" method="saveAdd">
+			<result name="saveAdd">/jsp/success.jsp</result>
+		</action>
+		
+		<!-- 显示view页面 -->
+		<action name="showView" class="equipmentHistoryParametersAction" method="showView">
+			<result name="showView">/jsp/equipment/paramCheck/paramCheckView.jsp</result>
+		</action>
+		
+		<!-- 删除 -->
+		<action name="delete" class="equipmentHistoryParametersAction" method="delete"/>
+
+		<!-- 显示edit页面 -->
+		<action name="showEdit" class="equipmentHistoryParametersAction" method="showEdit">
+			<result name="showEdit">/jsp/equipment/paramCheck/paramCheckEdit.jsp</result>
+		</action>
+
+		<!-- 保存修改 -->
+		<action name="saveEdit" class="equipmentHistoryParametersAction" method="saveEdit">
+			<result name="saveEdit">/jsp/success.jsp</result>
+		</action>
+
+		<!-- 显示设备的历史参数检查 -->
+		<action name="showHistoryCheck" class="equipmentHistoryParametersAction" method="showHistoryCheck">
+			<result name="showHistoryCheck">/jsp/equipment/paramCheck/paramCheckAView.jsp</result>
+		</action>
+
+
+	</package>
+</struts>
+	

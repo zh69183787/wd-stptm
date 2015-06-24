@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="newsMediaGroupActiveDao"  parent="abstractHibernateDao"
+	class="com.wonders.stpt.group.groupActive.NewsMediaGroupActive.dao.impl.NewsMediaGroupActiveDaoImpl">
+	
+	</bean>
+
+	<bean id="newsMediaGroupActiveServiceImpl" class="com.wonders.stpt.group.groupActive.NewsMediaGroupActive.service.impl.NewsMediaGroupActiveServiceImpl">
+		<property name="newsMediaGroupActiveDao" ref="newsMediaGroupActiveDao"></property>
+	</bean>
+
+	<bean id="newsMediaGroupActiveService" parent="basicTxProxy">
+		<property name="target" ref="newsMediaGroupActiveServiceImpl"></property>
+	</bean>
+
+	<bean id="groupActiveAction"  class="com.wonders.stpt.group.groupActive.NewsMediaGroupActive.action.GroupActiveAction">
+		<property name="newsMediaGroupActiveService" ref="newsMediaGroupActiveService"></property>
+	</bean>
+
+</beans>
+	
+
+	

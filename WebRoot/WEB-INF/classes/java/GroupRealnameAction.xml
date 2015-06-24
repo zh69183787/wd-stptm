@@ -1,0 +1,33 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="wibo" namespace="/wibo" extends="cuteframework-default">
+
+
+		<!-- 添加团成员信息-->
+		<action name="add" class="groupRealnameAction" method="add">
+			<result type="redirectAction">toAdd.action</result>
+		</action>
+		<action name="toAdd" class="groupRealnameAction" method="toAdd">
+			<result>/informatization/wibo/baseAdd.jsp</result>
+		</action>
+		
+		<action name="findByPage" class="groupRealnameAction" method="findByPage">
+			<result>/informatization/wibo/baseList.jsp</result>
+		</action>
+		
+		<action name="findById" class="groupRealnameAction" method="findById">
+		    <result name="edit">/informatization/wibo/baseEdit.jsp</result>
+		    <result name="view">/informatization/wibo/baseView.jsp</result>
+		</action>
+		
+		<action name="update" class="groupRealnameAction" method="update">
+		    <result>/informatization/wibo/editSuccess.jsp</result>
+		</action>
+		<action name="deleteData" class="groupRealnameAction" method="deleteData"/>
+
+	</package>
+
+</struts>
+	

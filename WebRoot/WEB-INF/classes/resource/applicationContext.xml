@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<description>
+		Spring Configuration of CuteFramework Based Application.
+	</description>
+	<import resource="classpath:frameworkContext.xml" />
+	<!--<import resource="classpath:extendContext.xml" /> -->
+	<!-- Dictionary Component Config
+		<import resource="classpath:dictContext.xml"/>
+	-->
+	<!-- Persistent Session Config
+		<import resource="classpath:sessionContext.xml"/>
+	-->
+	<!-- Security Component Config -->
+	<!--<import resource="classpath:resourceContext.xml" /> -->
+	<!--
+	<import resource="classpath:securityContext.xml" />
+	<import resource="classpath:appmgrContext.xml" />
+	<import resource="classpath:organContext.xml" />
+	-->
+	<!-- Workflow Component Config
+		<import resource="classpath:bpmsContext.xml" />
+	-->
+   <!--
+    <import resource="classpath:taglibContext.xml" />
+	-->
+	<!-- =================================================================== -->
+	<!-- Context Define                                                      -->
+	<!-- =================================================================== -->
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:database.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- =================================================================== -->
+	<!-- Data Source Define (jdbc & jndi)                                    -->
+	<!-- =================================================================== -->
+	<!-- JDBC Configuration -->
+	
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName"
+			value="${hibernate.connection.driver_class}" />
+		<property name="url" value="${hibernate.connection.url}" />
+		<property name="username"
+			value="${hibernate.connection.username}" />
+		<property name="password"
+			value="${hibernate.connection.password}" />
+	</bean>
+	<bean id="dataSource2"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName"
+			value="${hibernate.connection.driver_class}" />
+		<property name="url" value="${hibernate.connection.url2}" />
+		<property name="username"
+			value="${hibernate.connection.username2}" />
+		<property name="password"
+			value="${hibernate.connection.password2}" />
+	</bean>
+	
+	
+	<!-- new start,为了导数据而特意配置的，导完数据后可以删除 -->
+	<bean id="dataSource31old"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName"
+			value="${hibernate.connection.driver_class}" />
+		<property name="url" value="${hibernate.connection.url31old}" />
+		<property name="username"
+			value="${hibernate.connection.username31old}" />
+		<property name="password"
+			value="${hibernate.connection.password31old}" />
+	</bean>
+	
+	<bean id="dataSource31new"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName"
+			value="${hibernate.connection.driver_class}" />
+		<property name="url" value="${hibernate.connection.url31new}" />
+		<property name="username"
+			value="${hibernate.connection.username31new}" />
+		<property name="password"
+			value="${hibernate.connection.password31new}" />
+	</bean>
+	<bean id="sessionFactory31old"
+		class="com.wondersgroup.framework.core5.dao.support.EnhancedAnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource31old" />
+		<property name="configLocation"
+			value="classpath:hibernate.cfg.xml" />
+		<property name="annotatedPackagePrefixes">
+			<list>
+				<value>com.wondersgroup.framework</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					${hibernate.dialect}
+				</prop>
+			</props>
+		</property>
+		<property name="lobHandler" ref="${jdbc.handler}" />
+	</bean>
+	<bean id="sessionFactory31new"
+		class="com.wondersgroup.framework.core5.dao.support.EnhancedAnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource31new" />
+		<property name="configLocation"
+			value="classpath:hibernate.cfg.xml" />
+		<property name="annotatedPackagePrefixes">
+			<list>
+				<value>com.wondersgroup.framework</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					${hibernate.dialect}
+				</prop>
+			</props>
+		</property>
+		<property name="lobHandler" ref="${jdbc.handler}" />
+	</bean>
+	<!-- new end -->
+	<!--
+	
+	<bean id="dataSource3" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:comp/env/jdbc/stptdemo" />
+	</bean>
+	<bean id="sessionFactory3"
+		class="com.wondersgroup.framework.core5.dao.support.EnhancedAnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource3" />
+		<property name="configLocation"
+			value="classpath:hibernate.cfg.xml" />
+		<property name="annotatedPackagePrefixes">
+			<list>
+				<value>com.wondersgroup.framework</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					${hibernate.dialect}
+				</prop>
+			</props>
+		</property>
+		<property name="lobHandler" ref="${jdbc.handler}" />
+	</bean>
+	
+	 -->
+	
+	
+	
+	
+	
+	<!-- JNDI Configuration -->
+	<!-- 
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:comp/env/jdbc/stptdemo"/>
+	</bean>
+	
+	<bean id="dataSource2" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:comp/env/jdbc/stptinc"/>
+	</bean>
+    -->
+	<!-- =================================================================== -->
+	<!-- SessionFactory(For Hibernate)/ManagerFactory(For JPA) Define        -->
+	<!--  ONLY ONE OF THEM SHOULD BE USED                                    -->
+	<!-- =================================================================== -->
+	<bean id="sessionFactory"
+		class="com.wondersgroup.framework.core5.dao.support.EnhancedAnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation"
+			value="classpath:hibernate.cfg.xml" />
+		<property name="annotatedPackagePrefixes">
+			<list>
+				<value>com.wondersgroup.framework</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					${hibernate.dialect}
+				</prop>
+			</props>
+		</property>
+		<property name="lobHandler" ref="${jdbc.handler}" />
+	</bean>
+
+
+	<!-- T_Construction_Notice -->
+	 
+	<bean id="sessionFactory2"
+		class="com.wondersgroup.framework.core5.dao.support.EnhancedAnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource2" />
+		<property name="configLocation"
+			value="classpath:hibernate.cfg.xml" />
+		<property name="annotatedPackagePrefixes">
+			<list>
+				<value>com.wondersgroup.framework</value>
+			</list>
+		</property>
+		<property name="mappingDirectoryLocations">
+			<list>
+				<value>classpath:/com/wonders</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					${hibernate.dialect}
+				</prop>
+			</props>
+		</property>
+		<property name="lobHandler" ref="${jdbc.handler}" />
+	</bean>
+	 
+	
+	<!--  JPA Entity Manager Factory
+		<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="persistenceXmlLocation" value="classpath:persistence.xml" />
+		<property name="jpaVendorAdapter">
+		<bean
+		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+		<property name="showSql" value="true" />
+		<property name="databasePlatform"
+		value="${hibernate.dialect}" />
+		</bean>
+		</property>
+		</bean>
+	-->
+	<!--
+	<bean id="weblogicJdbcExtractor"
+		class="org.springframework.jdbc.support.nativejdbc.WebLogicNativeJdbcExtractor"
+		lazy-init="true" />
+	-->
+</beans>

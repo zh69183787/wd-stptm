@@ -1,0 +1,15 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="AssetTaskCheck" namespace="/test" extends="cuteframework-default">
+
+		<action name="addAssetTaskCheck" class="assetTaskCheckAction" method="addAssetTaskCheck"/>
+		<action name="deleteAssetTaskCheck" class="assetTaskCheckAction" method="deleteAssetTaskCheck"/>
+		<action name="findAssetTaskCheckById" class="assetTaskCheckAction" method="findAssetTaskCheckById"/>
+		<action name="findAssetTaskCheckByPage" class="assetTaskCheckAction" method="findAssetTaskCheckByPage"/>
+		<action name="updateAssetTaskCheck" class="assetTaskCheckAction" method="updateAssetTaskCheck"/>
+
+	</package>
+</struts>
+	

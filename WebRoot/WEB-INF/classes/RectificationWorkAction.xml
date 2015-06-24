@@ -1,0 +1,33 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="RectificationWork" namespace="/RectificationWork" extends="cuteframework-default">
+		<!-- 整改工作情况信息-->
+		<action name="add" class="rectificationWorkAction" method="add">
+			<result>/rectificationwork/editSuccess.jsp</result>
+		</action>
+		<action name="toAdd" class="rectificationWorkAction" method="toAdd" >
+			<result name="toAdd">/rectificationwork/add.jsp</result>
+		</action>
+		<action name="deleteRectificationWorkById" class="rectificationWorkAction" method="deleteRectificationWorkById"></action>
+		<action name="findRectificationWorkByPage" class="rectificationWorkAction" method="findRectificationWorkByPage">
+			<result>/rectificationwork/list.jsp</result>
+		</action>
+		<action name="findRectificationWorkById" class="rectificationWorkAction" method="findRectificationWorkById">
+			<result name="edit">/rectificationwork/edit.jsp</result>
+			<result name="view">/rectificationwork/view.jsp</result>
+		</action>
+		<action name="updateRectificationWorkById" class="rectificationWorkAction" method="updateRectificationWorkById">
+			<result>/rectificationwork/editSuccess.jsp</result>
+		</action>
+		
+		<!-- 根据id查看相关工作记录 -->
+		<action name="findRectificationWorkAndRecordById" class="workAndRecordAction" method="findRectificationWorkAndRecordById">
+			<result>/rectificationwork/views.jsp</result>
+		</action>
+		
+	</package>
+
+</struts>
+	

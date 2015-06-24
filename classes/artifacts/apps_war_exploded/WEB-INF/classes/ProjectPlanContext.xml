@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<bean id="projectPlanDaoImpl" parent="abstractHibernateDao" class="com.wonders.stpt.projectPlan.dao.impl.ProjectPlanDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory2" />
+	</bean>
+	<bean id="projectPlanServiceImpl" class="com.wonders.stpt.projectPlan.service.impl.ProjectPlanServiceImpl">
+		<property name="projectPlanDao" ref="projectPlanDaoImpl" />
+	</bean>
+
+	<bean id="projectPlanService" parent="basicTxProxy">
+		<property name="target" ref="projectPlanServiceImpl" />
+	</bean>
+
+	<bean name="projectPlanAction" class="com.wonders.stpt.projectPlan.action.ProjectPlanAction" singleton="false">
+		<property name="projectPlanService" ref="projectPlanService"></property>
+	</bean>
+
+</beans>
+	
+
+	

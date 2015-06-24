@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="real_nameGroupWiboDao"  parent="abstractHibernateDao"
+	class="com.wonders.stpt.group.groupWibo.Real_nameGroupWibo.dao.impl.Real_nameGroupWiboDaoImpl">
+	
+	</bean>
+
+	<bean id="real_nameGroupWiboServiceImpl" class="com.wonders.stpt.group.groupWibo.Real_nameGroupWibo.service.impl.Real_nameGroupWiboServiceImpl">
+		<property name="real_nameGroupWiboDao" ref="real_nameGroupWiboDao"></property>
+	</bean>
+
+	<bean id="real_nameGroupWiboService" parent="basicTxProxy">
+		<property name="target" ref="real_nameGroupWiboServiceImpl"></property>
+	</bean>
+
+	<bean id="groupRealnameAction"  class="com.wonders.stpt.group.groupWibo.Real_nameGroupWibo.action.GroupRealnameAction">
+		<property name="real_nameGroupWiboService" ref="real_nameGroupWiboService"></property>
+	</bean>
+
+</beans>
+	
+
+	

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- begin-user-doc -->
+	<!-- end-user-doc -->
+	
+	<!-- =================================================================== -->
+	<!-- DAO Impl Definition                                                 -->
+	<!-- =================================================================== -->
+
+	<bean id="hiddenDangersCorrectDaoImpl" parent="abstractHibernateDao"
+		class="com.wonders.stpt.hiddenDangersCorrect.dao.impl.HiddenDangersCorrectDaoImpl">
+	</bean>
+	
+	<bean id="hiddenDangersCorrectServiceImpl"
+		class="com.wonders.stpt.hiddenDangersCorrect.service.impl.HiddenDangersCorrectServiceImpl">
+		<property name="hiddenDangersCorrectDao" ref="hiddenDangersCorrectDaoImpl" />
+	</bean>
+	
+	<bean id="hiddenDangersCorrectService" parent="basicTxProxy">
+		<property name="target" ref="hiddenDangersCorrectServiceImpl" />
+	</bean>
+
+    <bean id="hdcChangeLogDaoImpl" parent="abstractHibernateDao"
+          class="com.wonders.stpt.hiddenDangersCorrect.dao.impl.HdcChangeLogDaoImpl">
+    </bean>
+
+    <bean id="hdcChangeLogServiceImpl"
+          class="com.wonders.stpt.hiddenDangersCorrect.service.impl.HdcChangeLogServiceImpl">
+        <property name="hdcChangeLogDao" ref="hdcChangeLogDaoImpl" />
+    </bean>
+
+    <bean id="hdcChangeLogService" parent="basicTxProxy">
+        <property name="target" ref="hdcChangeLogServiceImpl" />
+    </bean>
+	
+	<bean name="hiddenDangersCorrectAction"
+		class="com.wonders.stpt.hiddenDangersCorrect.action.HiddenDangersCorrectAction"
+		singleton="false">
+		<property name="hiddenDangersCorrectService" ref="hiddenDangersCorrectService"></property>
+        <property name="hdcChangeLogService" ref="hdcChangeLogService"></property>
+    </bean>
+
+</beans>
+	

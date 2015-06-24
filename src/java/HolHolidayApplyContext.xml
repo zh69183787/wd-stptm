@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- begin-user-doc -->
+	<!-- end-user-doc -->
+	
+	<!-- =================================================================== -->
+	<!-- DAO Impl Definition                                                 -->
+	<!-- =================================================================== -->
+
+	<bean id="holHolidayApplyDaoImpl" parent="abstractHibernateDao" class="com.wonders.stpt.annualLeave.dao.impl.HolHolidayApplyDaoImpl">
+		<property name="sessionFactory31old" ref="sessionFactory31old" />
+		<property name="sessionFactory31new" ref="sessionFactory31new" />
+	</bean>
+	<!---->
+	<bean id="holHolidayApplyServiceImpl"
+		class="com.wonders.stpt.annualLeave.service.impl.HolHolidayApplyServiceImpl">
+		<property name="holHolidayApplyDao" ref="holHolidayApplyDaoImpl" />
+		<property name="holHolidayDao" ref="holHolidayDaoImpl" />
+	</bean>
+
+	<bean id="holHolidayApplyService" parent="basicTxProxy">
+		<property name="target" ref="holHolidayApplyServiceImpl" />
+	</bean>
+
+
+
+
+
+	<bean name="holHolidayApplyAction"
+		class="com.wonders.stpt.annualLeave.action.HolHolidayApplyAction"
+		singleton="false">
+		<property name="holHolidayApplyService" ref="holHolidayApplyService"></property>
+        <property name="msgUsermessageService" ref="msgUsermessageService"></property>
+		<property name="holHolidayService" ref="holHolidayService"></property>
+		<property name="holConfigService" ref="holConfigService"></property>
+	</bean>
+
+    <bean id="msgUsermessageDaoImpl" parent="abstractHibernateDao" class="com.wonders.stpt.myNotice.dao.impl.TMsgUsermessageDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory2" />
+    </bean>
+
+    <bean id="msgUsermessageServiceImpl"
+          class="com.wonders.stpt.myNotice.service.impl.TMsgUsermessageServiceImpl">
+        <property name="msgUsermessageDao" ref="msgUsermessageDaoImpl" />
+    </bean>
+
+
+    <bean id="msgUsermessageService" parent="basicTxProxy">
+        <property name="target" ref="msgUsermessageServiceImpl" />
+    </bean>
+</beans>
+	

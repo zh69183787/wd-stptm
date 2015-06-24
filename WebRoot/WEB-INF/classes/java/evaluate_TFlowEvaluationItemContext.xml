@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- begin-user-doc -->
+	<!-- end-user-doc -->
+	
+	<!-- =================================================================== -->
+	<!-- DAO Impl Definition                                                 -->
+	<!-- =================================================================== -->
+
+	<bean id="tFlowEvaluationItemDaoImpl" parent="abstractHibernateDao"
+		class="com.wonders.stpt.evaluate.FlowEvaluationItem.dao.impl.TFlowEvaluationItemDaoImpl">
+	</bean>
+	
+	<bean id="tFlowEvaluationItemServiceImpl"
+		class="com.wonders.stpt.evaluate.FlowEvaluationItem.service.impl.TFlowEvaluationItemServiceImpl">
+		<property name="flowEvaluationItemDao" ref="tFlowEvaluationItemDaoImpl" />
+	</bean>
+	
+	<bean id="tFlowEvaluationItemService" parent="basicTxProxy">
+		<property name="target" ref="tFlowEvaluationItemServiceImpl" />
+	</bean>
+	
+	<bean name="tFlowEvaluationItemAction"
+		class="com.wonders.stpt.evaluate.FlowEvaluationItem.action.TFlowEvaluationItemAction"
+		singleton="false">
+		<property name="flowEvaluationItemService" ref="tFlowEvaluationItemService"></property>	
+	</bean>
+
+</beans>
+	

@@ -1,0 +1,31 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="myUrge" namespace="/myurge" extends="cuteframework-default">
+		<!-- 显示列表页面 -->
+		<action name="showMyUrge" class="vMyUrgeAction" method="showMyUrge">
+			<result name="showMyUrge">/myurge/list.jsp</result>
+		</action>
+		<action name="sendMsgLeader" class="vMyUrgeAction" method="sendMsgLeader">
+	    	<result name="sucess" type="dispatcher">
+	    		/myurge/cuiBanLeader.jsp
+	    	</result>
+	    </action>
+	    <action name="sendMsgPerson" class="vMyUrgeAction" method="sendMsgPerson">
+	    	<result name="sucess" type="dispatcher">
+	    		/myurge/cuiBan.jsp
+	    	</result>
+	    </action>
+	    <action name="sendMsgMulti" class="vMyUrgeAction" method="sendMsgMulti"></action>
+	    	
+	    <action name="flowUrgenList" class="vMyUrgeAction" method="flowUrgenList">
+	    	<result name="flowUrgenList" type="dispatcher">
+	    		/myurge/flowUrgenList.jsp
+	    	</result>
+	    </action>
+	    
+	    
+	    
+	</package>
+</struts>

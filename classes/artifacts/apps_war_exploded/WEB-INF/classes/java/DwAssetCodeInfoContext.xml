@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- begin-user-doc -->
+	<!-- end-user-doc -->
+	
+	<!-- =================================================================== -->
+	<!-- DAO Impl Definition                                                 -->
+	<!-- =================================================================== -->
+
+
+	<bean id="dwAssetCodeInfoDaoImpl" parent="abstractHibernateDao"
+		class="com.wonders.stpt.asset.dao.impl.DwAssetCodeInfoDaoImpl">
+	</bean>
+	
+	<bean id="dwAssetCodeInfoServiceImpl"
+		class="com.wonders.stpt.asset.service.impl.DwAssetCodeInfoServiceImpl">
+		<property name="dwAssetCodeInfoDao" ref="dwAssetCodeInfoDaoImpl" />
+	</bean>
+	
+	<bean id="dwAssetCodeInfoService" parent="basicTxProxy">
+		<property name="target" ref="dwAssetCodeInfoServiceImpl" />
+	</bean>
+	
+	<bean name="dwAssertCodeInfoAction"
+		class="com.wonders.stpt.asset.action.DwAssetCodeInfoAction"
+		singleton="false">
+		<property name="dwAssetCodeInfoService" ref="dwAssetCodeInfoServiceImpl"></property>	
+	</bean>
+
+
+</beans>
+	

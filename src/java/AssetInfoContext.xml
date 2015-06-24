@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<bean id="assetInfoDaoImpl" parent="abstractHibernateDao" class="com.wonders.stpt.asset.dao.impl.AssetInfoDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="assetInfoHistoryDaoImpl" parent="abstractHibernateDao" class="com.wonders.stpt.asset.dao.impl.AssetInfoHistoryDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="cfCodeInfoDaoImpl" parent="abstractHibernateDao" class="com.wonders.stpt.asset.dao.impl.CfCodeInfoDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="assetInfoServiceImpl" class="com.wonders.stpt.asset.service.impl.AssetInfoServiceImpl">
+		<property name="assetInfoDao" ref="assetInfoDaoImpl" />
+		<property name="assetInfoHistoryDao" ref="assetInfoHistoryDaoImpl"></property>
+		<property name="cfCodeInfoDao" ref="cfCodeInfoDaoImpl"></property>
+	</bean>
+
+	<bean id="assetInfoService" parent="basicTxProxy">
+		<property name="target" ref="assetInfoServiceImpl" />
+	</bean>
+
+	<bean name="assetInfoAction" class="com.wonders.stpt.asset.action.AssetInfoAction" singleton="false">
+		<property name="assetInfoService" ref="assetInfoService"></property>
+		<property name="supplierService" ref="supplierService"></property>
+		<property name="equipmentInfoService" ref="equipmentInfoService"></property>
+		<property name="assetTaskCheckService" ref="assetTaskCheckService"></property>
+		<property name="dwAssetCodeInfoService" ref="dwAssetCodeInfoService"></property>
+	</bean>
+
+</beans>
+	
+
+	

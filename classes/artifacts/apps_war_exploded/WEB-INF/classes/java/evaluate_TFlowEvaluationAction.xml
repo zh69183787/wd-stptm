@@ -1,0 +1,45 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="TFlowEvaluation" namespace="/evaluate" extends="cuteframework-default">
+
+		<!-- 显示列表页面 -->
+		<action name="showFlowEvaluations" class="tFlowEvaluationAction" method="showFlowEvaluations">
+			<result name="showFlowEvaluations">/evaluate/list.jsp</result>
+		</action>
+		
+		<!-- 显示添加页面 -->
+		<action name="showAddPage" class="tFlowEvaluationAction" method="showAddPage">
+			<result name="showAddPage">/evaluate/add.jsp</result>
+		</action>
+		
+		<!-- 添加 -->
+		<action name="saveFlowEvaluaton" class="tFlowEvaluationAction" method="saveFlowEvaluaton">
+			<result name="saveFlowEvaluaton">/evaluate/success.jsp</result>
+		</action>
+		
+		<!-- 根据id查询详细 -->
+		<action name="findFlowById" class="tFlowEvaluationAction" method="findFlowById" />
+		
+		<!-- 删除 -->
+		<action name="deleteFlowEvaluation" class="tFlowEvaluationAction" method="deleteFlowEvaluation" />
+		
+		<!-- 根据主键查询 -->
+		<action name="showFlowEvaluation" class="tFlowEvaluationAction" method="showFlowEvaluation">
+			<result name="showFlowEvaluation">/evaluate/view.jsp</result>
+		</action>
+		
+		<!-- 显示修改页面 -->
+		<action name="showEditPage" class="tFlowEvaluationAction" method="showEditPage">
+			<result name="showEditPage">/evaluate/edit.jsp</result>
+		</action>
+		
+		<!-- 保存修改 -->
+		<action name="updateFlowEvaluation" class="tFlowEvaluationAction" method="updateFlowEvaluation">
+			<result name="updateFlowEvaluation">/evaluate/success.jsp</result>
+		</action>
+		
+	</package>
+</struts>
+	

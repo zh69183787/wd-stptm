@@ -1,0 +1,16 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="CsUser" namespace="/sthr" extends="cuteframework-default">
+
+		<action name="addCsUser" class="csUserAction" method="addCsUser"/>
+		<action name="deleteCsUser" class="csUserAction" method="deleteCsUser"/>
+		<action name="findCsUserById" class="csUserAction" method="findCsUserById"/>
+		<action name="findCsUserByPage" class="csUserAction" method="findCsUserByPage"/>
+		<action name="updateCsUser" class="csUserAction" method="updateCsUser"/>
+		<action name="checkJobNumber" class="csUserAction" method="checkJobNumber"/>		  		
+
+	</package>
+</struts>
+	

@@ -1,0 +1,43 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="replace" namespace="/replace" extends="cuteframework-default">
+
+		
+		<!-- 显示list页面 -->
+		<action name="showList" class="equipmentPartsReplaceAction" method="showList">
+			<result name="showList">/jsp/equipment/replace/equipmentReplaceList.jsp</result>
+		</action>
+		
+		<!-- 显示add页面 -->
+		<action name="showAdd" class="equipmentPartsReplaceAction" method="showAdd">
+			<result name="showAdd">/jsp/equipment/replace/equipmentReplaceAdd.jsp</result>
+		</action>
+		
+		<!-- 保存新增-->
+		<action name="saveAdd" class="equipmentPartsReplaceAction" method="saveAdd">
+			<result name="saveAdd">/jsp/success.jsp</result>
+		</action>
+		
+		<!-- 显示view页面 -->
+		<action name="showView" class="equipmentPartsReplaceAction" method="showView">
+			<result name="showView">/jsp/equipment/replace/equipmentReplaceView.jsp</result>
+		</action>
+		
+		<!-- 删除 -->
+		<action name="delete" class="equipmentPartsReplaceAction" method="delete"/>
+
+		<!-- 显示edit页面 -->
+		<action name="showEdit" class="equipmentPartsReplaceAction" method="showEdit">
+			<result name="showEdit">/jsp/equipment/replace/equipmentReplaceEdit.jsp</result>
+		</action>
+
+		<!-- 保存修改 -->
+		<action name="saveEdit" class="equipmentPartsReplaceAction" method="saveEdit">
+			<result name="saveEdit">/jsp/success.jsp</result>
+		</action>
+
+	</package>
+</struts>
+	

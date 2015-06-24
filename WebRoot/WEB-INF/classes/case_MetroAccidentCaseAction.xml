@@ -1,0 +1,77 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="MetroAccidentCase" namespace="/accidentCase" extends="cuteframework-default">
+		<action name="addMetroAccidentCase" class="metroAccidentCaseAction" method="addMetroAccidentCase">
+		    <result name="add">/accidentCase/add.jsp?firstLoad=false</result>
+		    <result name="add_E">/accidentCase/add_E.jsp?firstLoad=false</result>
+			<!-- 
+			<result name="1">/MetroAccidentCase/add.jsp?firstLoad=false</result>
+			<result name="2">/MetroAccidentCase/add.jsp?caseType=2</result>
+			<result name="3">/MetroAccidentCase/add.jsp?caseType=3</result>
+			<result name="4">/MetroAccidentCase/add.jsp?caseType=4</result>
+			 -->
+		</action>
+		<action name="deleteMetroAccidentCase" class="metroAccidentCaseAction" method="deleteMetroAccidentCase"/>
+		<action name="findMetroAccidentCaseById" class="metroAccidentCaseAction" method="findMetroAccidentCaseById">
+		    <result name="edit">/accidentCase/edit.jsp</result>
+		    <result name="view">/accidentCase/view.jsp</result>
+		    <result name="edit_E">/accidentCase/edit_E.jsp</result>
+		    <result name="view_E">/accidentCase/view_E.jsp</result>
+		</action>
+		<action name="findMetroAccidentCaseByPage" class="metroAccidentCaseAction" method="findMetroAccidentCaseByPage">
+			<result name="success">/accidentCase/list_manage.jsp</result>
+		</action>
+		<action name="updateMetroAccidentCase" class="metroAccidentCaseAction" method="updateMetroAccidentCase">
+		    <result name="success">/accidentCase/editSuccess.jsp</result>
+        </action>
+		
+		
+		<action name="metroAccidentCaseAction" class="metroAccidentCaseAction">
+			<result>/accidentCase/list_manage.jsp</result>
+			<result name="deleteMetroAccidentCaseById" type="redirect-action">
+				<param name="actionName">findMetroAccidentCaseByPage</param>
+		        <param name="caseType">${caseType}</param>
+			</result>
+		</action>
+		
+		<action name="findMetroAccidentCaseByPage2" class="metroAccidentCaseAction" method="findMetroAccidentCaseByPage2">
+			<result name="list">/accidentCase/list_lookup.jsp</result>
+			<result name="list_all">/accidentCase/list_lookup_all.jsp</result>
+		</action>
+        <action name="toAdd" class="metroAccidentCaseAction" method="toAdd">
+			<result name="add">/accidentCase/add.jsp</result>
+			<result name="add_E">/accidentCase/add_E.jsp</result>
+		</action>
+		
+		<action name="upload" class="metroAccidentCaseAction">
+			<result name="fileUpload">/accidentCase/add.jsp</result>
+		</action>
+		
+		<action name="upload2" class="metroAccidentCaseAction">
+			<result name="fileUpload">/accidentCase/add.jsp</result>
+		</action>
+		
+		<action name="findMetroAccidentCaseByUpdatePerson" class="metroAccidentCaseAction" method="findMetroAccidentCaseByUpdatePerson">
+			<result name="success">/accidentCase/listByUpdatePerson.jsp</result>
+		</action>
+		
+		
+		<action name="deleteByIdAndUpdatePerson" class="metroAccidentCaseAction" method="deleteByIdAndUpdatePerson">
+			<result name="deleteByIdAndUpdatePerson" type="redirect-action">
+				<param name="actionName">findMetroAccidentCaseByUpdatePerson</param>
+		        <param name="caseType">${caseType}</param>
+			</result>
+		</action>
+		
+		
+		<action name="findByIdAndUpdatePerson" class="metroAccidentCaseAction" method="findByIdAndUpdatePerson">
+		    <result name="findByIdAndUpdatePerson">/accidentCase/editByUpdatePerson.jsp</result>
+		    <result name="findByIdAndUpdatePerson_E">/accidentCase/editByUpdatePerson_E.jsp</result>
+		</action>
+		
+
+	</package>
+</struts>
+	

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts> 
+  <package name="default" extends="cuteframework-default"/>  
+  <!-- construction struts-->  
+  <include file="/construction_TConstructionNoticeAction.xml"/>  
+  <include file="/construction_MetroLineAction.xml"/>  
+  <!-- sthr struts -->  
+  <include file="/sthr_HrBInfoAction.xml"/>  
+  <include file="/sthr_HrEtAction.xml"/>  
+  <include file="/sthr_HrEtDAction.xml"/>  
+  <include file="/sthr_HrExtInfoAction.xml"/>  
+  <include file="/sthr_CsUserAction.xml"/>  
+  <!-- accidentCase struts  -->  
+  <include file="/case_MetroAccidentCaseAction.xml"/>  
+  <include file="/case_MetroLineAction.xml"/>  
+  <include file="/case_MetroStationAction.xml"/>  
+  <include file="/case_AccidentCaseApprovalAction.xml"/>  
+  <include file="/case_TAttachAction.xml"/>  
+  <!-- evaluation struts -->  
+  <include file="/evaluate_TFlowEvaluationAction.xml"/>  
+  <include file="/evaluate_TFlowEvaluationItemAction.xml"/>  
+  <!--asset struts -->  
+  <include file="/AssetInfoAction.xml"/>  
+  <include file="/AssetInfoHistoryAction.xml"/>  
+  <include file="/SupplierAction.xml"/>  
+  <include file="/AssetTaskAction.xml"/>  
+  <include file="/EquipmentInfoAction.xml"/>  
+  <include file="/EquipmentPartsReplaceAction.xml"/>  
+  <include file="/EquipmentServiceInfoAction.xml"/>  
+  <include file="/EquipmentParametersAction.xml"/>  
+  <include file="/EquipmentHistoryParametersAction.xml"/>  
+  <include file="/AssetTaskCheckAction.xml"/>  
+  <include file="/SecReportAction.xml"/>  
+  <include file="/UserAction.xml"/>  
+  <include file="/HiddenDangersCorrectAction.xml"/>  
+  <include file="/DwAssetCodeInfoAction.xml"/>  
+  <include file="/DbFollowAction.xml"/>  
+  <include file="/TAttachAction.xml"/>  
+  <include file="/DbBusinessAction.xml"/>
+  
+  <include file="/AddUpdateGroupMember.xml"/>
+  <include file="/AddUpdateGroupLeader.xml"/>
+  <include file="/AddGroupMemberDirectly.xml"/>
+  <include file="/AddGroupNewMedia.xml"/>
+  <include file="/AddNewsMediaGroupWork.xml"/>
+  <include file="/GroupRealnameAction.xml"/>
+  <include file="/GroupActiveAction.xml"/>
+  <include file="/GroupCommunicationAction.xml"/>
+  
+  <include file="/RectificationWorkAction.xml"/>
+  <include file="/RectificationRecordAction.xml"></include>
+  
+  
+   <include file="/MenuAction.xml"/>  
+  <!-- myNotice struts  -->  
+  <include file="/MyNoticeAction.xml"/>  
+  <!-- myurge struts -->  
+  <include file="/myUrgeAction.xml"/>  
+  <!-- overtime struts -->  
+  <include file="/overtimeAction.xml"/>  
+  <include file="/commAction.xml"/>  
+    
+  <include file="/HolConfigAction.xml"/>  
+  <include file="/HolHolidayAction.xml"/>  
+  <include file="/HolHolidayApplyAction.xml"/>
+   <!-- groupaddress struts  -->
+  <include file="/addressAction.xml"/>
+  
+  <!-- sunjiawei 项目计划 -->
+  <include file="/ProjectPlanAction.xml"></include>
+</struts>

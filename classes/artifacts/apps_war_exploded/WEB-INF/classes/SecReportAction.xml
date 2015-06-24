@@ -1,0 +1,43 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="SecReport" namespace="/securityreport" extends="cuteframework-default">
+
+		<action name="addOrUpdateSecReport" class="secReportAction" method="addOrUpdateSecReport">
+			<result name="toUpdate">/securityreport/operation.jsp</result>
+			<result name="toSuccess">/securityreport/success.jsp</result>
+		</action>
+		<action name="addSecReport" class="secReportAction" method="addSecReport"/>
+		
+		<action name="deleteSecReport" class="secReportAction" method="deleteSecReport">			
+			<result name="toDelete" type="redirect-action">findSecReportByPage</result>
+		</action>
+			
+		
+		<action name="findSecReportById" class="secReportAction" method="findSecReportById">
+			<result name="toOperation">/securityreport/operation.jsp</result>
+			<result name="toView">/securityreport/view.jsp</result>
+		</action>
+		
+		<action name="findSecReportByPage" class="secReportAction" method="findSecReportByPage">	
+			<result name="toList">/securityreport/secList.jsp</result>
+		</action>
+		
+		<action name="updateSecReport" class="secReportAction" method="updateSecReport"/>
+	
+		<action name="exportExcel" class="secReportAction"> 
+            <result name="success" type="stream" > 
+                <param name="contentType">application/vnd.ms-excel </param>  
+
+                <param name="inputName " >excelStream </param>
+                <param name="contentDisposition">attachment;filename="${fileName}.xls "</param>
+               <param name="bufferSize">1024</param>
+            </result> 
+            <result name="error">/WEB-INF/error.jsp</result>
+		</action> 
+		
+
+	</package>
+</struts>
+	

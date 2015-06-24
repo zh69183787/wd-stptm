@@ -1,0 +1,33 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="work" namespace="/work" extends="cuteframework-default">
+
+
+		<!-- 添加干部成员信息-->
+		<action name="add" class="workAction" method="add">
+			<result name="add" type="redirectAction">toAdd.action</result>
+		</action>
+		<action name="toAdd" class="workAction" method="toAdd">
+			<result name="toAdd">/informatization/work/baseAdd.jsp</result>
+		</action>
+		
+		<action name="findGroupWorkByPage" class="workAction" method="findGroupWorkByPage">
+			<result name="findGroupWorkByPage">/informatization/work/baseList.jsp</result>
+		</action>
+		
+		<action name="findGroupWorkById" class="workAction" method="findGroupWorkById">
+		    <result name="edit">/informatization/work/baseEdit.jsp</result>
+		    <result name="view">/informatization/work/baseView.jsp</result>
+		</action>
+		
+		<action name="updateGroupWorkId" class="workAction" method="updateGroupWorkId">
+		    <result>/informatization/work/editSuccess.jsp</result>
+		</action>
+		<action name="deleteData" class="workAction" method="deleteData"/>
+
+	</package>
+
+</struts>
+	

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- begin-user-doc -->
+	<!-- end-user-doc -->
+	
+	<!-- =================================================================== -->
+	<!-- DAO Impl Definition                                                 -->
+	<!-- =================================================================== -->
+
+	<!-- ConstructionNotice -->
+	<bean id="tConstructionNoticeDaoImpl" parent="abstractHibernateDao"
+		class="com.wonders.stpt.construction.TConstructionNotice.dao.impl.TConstructionNoticeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory2"></property>
+	</bean>
+	
+	<bean id="tConstructionNoticeServiceImpl"
+		class="com.wonders.stpt.construction.TConstructionNotice.service.impl.TConstructionNoticeServiceImpl">
+		<property name="constructionNoticeDao" ref="tConstructionNoticeDaoImpl" />
+	</bean>
+	
+	<bean id="tConstructionNoticeService" parent="basicTxProxy">
+		<property name="target" ref="tConstructionNoticeServiceImpl" />
+	</bean>
+	
+	<bean name="tConstructionNoticeAction"
+		class="com.wonders.stpt.construction.TConstructionNotice.action.TConstructionNoticeAction"
+		singleton="false">
+		<property name="constructionNoticeService" ref="tConstructionNoticeService"></property>
+		<!-- <property name="metroLineService" ref="metroLineService"></property> -->
+	</bean>
+	
+
+</beans>
+	

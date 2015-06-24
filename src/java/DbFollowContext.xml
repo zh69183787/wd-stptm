@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- begin-user-doc -->
+	<!-- end-user-doc -->
+	
+	<!-- =================================================================== -->
+	<!-- DAO Impl Definition                                                 -->
+	<!-- =================================================================== -->
+
+	<bean id="docDbDaoImpl" parent="abstractHibernateDao"
+		class="com.wonders.stpt.dbFollow.dao.impl.DocDbDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory2"></property>
+	</bean>
+	
+	<bean id="dbFollowDaoImpl" parent="abstractHibernateDao"
+		class="com.wonders.stpt.dbFollow.dao.impl.DbFollowDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="docDbServiceImpl"
+		class="com.wonders.stpt.dbFollow.service.impl.DocDbServiceImpl">
+		<property name="docDbDao" ref="docDbDaoImpl" />
+		<property name="dbFollowDao" ref="dbFollowDaoImpl" />
+	</bean>
+	
+	<bean id="docDbService" parent="basicTxProxy">
+		<property name="target" ref="docDbServiceImpl" />
+	</bean>
+	
+	<bean name="dbFollowAction"
+		class="com.wonders.stpt.dbFollow.action.DbFollowAction"
+		singleton="false">
+		<property name="docDbService" ref="docDbService"></property>	
+	</bean>
+
+</beans>
+	

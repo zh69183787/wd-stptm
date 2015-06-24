@@ -1,0 +1,49 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="supplier" namespace="/supplier" extends="cuteframework-default">
+
+		<!-- 显示list页面 -->
+		<action name="showList" class="supplierAction" method="showList">
+			<result name="showList">/jsp/supplier/supplierList.jsp</result>
+		</action>
+		
+		<!-- 显示add页面 -->
+		<action name="showAdd" class="supplierAction" method="showAdd">
+			<result name="showAdd">/jsp/supplier/supplierAdd.jsp</result>
+		</action>
+		
+		<!-- 保存新增-->
+		<action name="saveAdd" class="supplierAction" method="saveAdd">
+			<result name="saveAdd">/jsp/success.jsp</result>
+		</action>
+		
+		<!-- 显示view页面 -->
+		<action name="showView" class="supplierAction" method="showView">
+			<result name="showView">/jsp/supplier/supplierView.jsp</result>
+		</action>
+		
+		<!-- 删除 -->
+		<action name="delete" class="supplierAction" method="delete"/>
+
+		<!-- 显示edit页面 -->
+		<action name="showEdit" class="supplierAction" method="showEdit">
+			<result name="showEdit">/jsp/supplier/supplierEdit.jsp</result>
+		</action>
+
+		<!-- 保存修改 -->
+		<action name="saveEdit" class="supplierAction" method="saveEdit">
+			<result name="saveEdit">/jsp/success.jsp</result>
+		</action>
+		
+		<!-- 保存修改 -->
+		<action name="showSupplier" class="supplierAction" method="showSupplier"/>
+		
+		<!-- 查询 -->
+		<action name="findSupplierByNameAndType" class="supplierAction" method="findSupplierByNameAndType"/>
+		
+		
+	</package>
+</struts>
+	

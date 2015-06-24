@@ -1,0 +1,16 @@
+<!DOCTYPE struts PUBLIC    
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="dwassetcodeinfo" namespace="/dwassetcodeinfo" extends="cuteframework-default">
+		 
+		<action name="addDwAssertCodeInfo" class="dwAssertCodeInfoAction" method="addDwAssertCodeInfo"/>
+		<action name="deleteDwAssertCodeInfo" class="dwAssertCodeInfoAction" method="deleteDwAssertCodeInfo"/>
+		<action name="findDwAssertCodeInfoById" class="dwAssertCodeInfoAction" method="findDwAssertCodeInfoById"/>
+		<action name="findDwAssertCodeInfoByPage" class="dwAssertCodeInfoAction" method="findDwAssertCodeInfoByPage"/>
+		<action name="updateDwAssertCodeInfo" class="dwAssertCodeInfoAction" method="updateDwAssertCodeInfo"/>
+		<action name="updateDwAssertCodeInfo" class="dwAssertCodeInfoAction" method="updateDwAssertCodeInfo"/>
+
+	</package>
+</struts>
+	

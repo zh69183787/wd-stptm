@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- begin-user-doc -->
+	<!-- end-user-doc -->
+	
+	<!-- =================================================================== -->
+	<!-- DAO Impl Definition                                                 -->
+	<!-- =================================================================== -->
+
+	<bean id="metroLineDaoImpl" parent="abstractHibernateDao"
+		class="com.wonders.stpt.construction.ConstructionMetroLine.dao.impl.ConstructionMetroLineDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="metroLineServiceImpl"
+		class="com.wonders.stpt.construction.ConstructionMetroLine.service.impl.ConstructionMetroLineServiceImpl">
+		<property name="metroLineDao" ref="metroLineDaoImpl" />
+	</bean>
+	
+	<bean id="metroLineService" parent="basicTxProxy">
+		<property name="target" ref="metroLineServiceImpl" />
+	</bean>
+	
+	<bean name="metroLineAction"
+		class="com.wonders.stpt.construction.ConstructionMetroLine.action.ConstructionMetroLineAction"
+		singleton="false">
+		<property name="metroLineService" ref="metroLineService"></property>	
+	</bean>
+
+</beans>
+	

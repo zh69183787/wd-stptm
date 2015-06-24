@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- begin-user-doc -->
+	<!-- end-user-doc -->
+	
+	<!-- =================================================================== -->
+	<!-- DAO Impl Definition                                                 -->
+	<!-- =================================================================== -->
+
+	<bean id="accidentCaseApprovalDaoImpl" parent="abstractHibernateDao"
+		class="com.wonders.stpt.accidentCase.AccidentCaseApproval.dao.impl.AccidentCaseApprovalDaoImpl">
+	</bean>
+	
+	<bean id="accidentCaseApprovalServiceImpl"
+		class="com.wonders.stpt.accidentCase.AccidentCaseApproval.service.impl.AccidentCaseApprovalServiceImpl">
+		<property name="accidentCaseApprovalDao" ref="accidentCaseApprovalDaoImpl" />
+	</bean>
+	
+	<bean id="accidentCaseApprovalService" parent="basicTxProxy">
+		<property name="target" ref="accidentCaseApprovalServiceImpl" />
+	</bean>
+	
+	<bean name="accidentCaseApprovalAction"
+		class="com.wonders.stpt.accidentCase.AccidentCaseApproval.action.AccidentCaseApprovalAction"
+		singleton="false">
+		<property name="accidentCaseApprovalService" ref="accidentCaseApprovalService"></property>	
+	</bean>
+
+</beans>
+	

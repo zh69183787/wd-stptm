@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+																	
+
+	<bean name="addressAction"
+		class="com.wonders.stpt.address.action.AddressAction" singleton="false">
+		<property name="addressService" ref="addressService" />
+	</bean>
+	
+	<bean id="addressService" parent="basicTxProxy">
+		<property name="target" ref="addressServiceImpl" />
+	</bean>
+	
+	<bean id="addressServiceImpl" class="com.wonders.stpt.address.service.impl.AddressServiceImpl">
+		<property name="addressDao" ref="addressDaoImpl" />
+	</bean>
+	
+	
+	<bean id="addressDaoImpl" parent="abstractHibernateDao" class="com.wonders.stpt.address.dao.impl.AddressDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory2" />
+	</bean>
+
+</beans>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+"http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="vMyUrgeDaoImpl" parent="abstractHibernateDao" class="com.wonders.stpt.myUrge.dao.impl.VMyUrgeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory2" />
+	</bean>
+	
+	<bean id="urgeDaoImpl" parent="abstractHibernateDao" class="com.wonders.stpt.myUrge.dao.impl.UrgeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory2" />
+	</bean>
+	
+	<bean id="flowUrgenDaoImpl" parent="abstractHibernateDao" class="com.wonders.stpt.myUrge.dao.impl.FlowUrgenDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory2" />
+	</bean>
+	
+	<bean id="vMyUrgeServiceImpl"
+		class="com.wonders.stpt.myUrge.service.impl.VMyUrgeServiceImpl">
+		<property name="myUrgeDao" ref="vMyUrgeDaoImpl" />
+	</bean>
+	
+	<bean id="urgeServiceImpl"
+		class="com.wonders.stpt.myUrge.service.impl.UrgeServiceImpl">
+		<property name="urgeDao" ref="urgeDaoImpl" />
+	</bean>
+	
+	<bean id="flowUrgenServiceImpl"
+		class="com.wonders.stpt.myUrge.service.impl.FlowUrgenServiceImpl">
+		<property name="flowUrgenDao" ref="flowUrgenDaoImpl" />
+	</bean>
+	
+	
+	<bean id="vMyUrgeService" parent="basicTxProxy">
+		<property name="target" ref="vMyUrgeServiceImpl" />
+	</bean>
+	
+	<bean id="vFlowUrgenService" parent="basicTxProxy">
+		<property name="target" ref="flowUrgenServiceImpl" />
+	</bean>
+	
+	<bean id="vUrgeService" parent="basicTxProxy">
+		<property name="target" ref="urgeServiceImpl" />
+	</bean>
+	
+	
+	
+	<bean name="vMyUrgeAction" class="com.wonders.stpt.myUrge.action.VMyUrgeAction" singleton="false">
+		<property name="myUrgeService" ref="vMyUrgeService"></property>
+		<property name="flowUrgenService" ref="vFlowUrgenService"></property>
+		<property name="urgeService" ref="vUrgeService"></property>
+	</bean>
+	
+	
+</beans>
+	
